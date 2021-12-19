@@ -1,16 +1,24 @@
 import logo from '../assets/images/logo.png';
 import HeaderNav from './HeaderNav';
+import HeaderSearch from './HeaderSearch';
 
-import '../styles/header.scss';
+import '../styles/Header.scss';
 
-function Header() {
+function Header({ getMovies, query, setQuery }) {
   return (
-    <div class='header'>
-      <div class='header__wrapper'>
-        <div class='header__container'>
-          <div class='header__logo-container'>
-            <img className='header__logo' src={logo} alt='' />
+    <div className='header'>
+      <div className='header__wrapper'>
+        <div className='header__container'>
+          <div className='header__logo-container'>
+            <a href='https://www.kinopoisk.ru' target='_blank' rel='noreferrer'>
+              <img className='header__logo' src={logo} alt='' />
+            </a>
           </div>
+          <HeaderSearch
+            query={query}
+            setQuery={setQuery}
+            getMovies={getMovies}
+          />
           <HeaderNav />
         </div>
       </div>

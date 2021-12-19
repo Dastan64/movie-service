@@ -22,20 +22,9 @@
     }
     &__link {
         color: white;
-        position: relative;
-        &::after {
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 0;
-            content: "";
-            display: block;
-            height: 1px;
-            background-color: white;
-            transition: width 0.3s ease-in;
-        }
-        &:hover::after {
-            width: 100%;
+        transition: color 0.2s ease-in;
+        &:hover {
+            color: #fab82e;
         }
     }
 }
