@@ -14,7 +14,7 @@ function App() {
       {
         method: 'GET',
         headers: {
-          'X-API-KEY': 'b8387e62-1761-4aed-9e6d-e4befe9217da',
+          'X-API-KEY': process.env.REACT_APP_API_KEY,
           'Content-Type': 'application/json',
         },
       }
