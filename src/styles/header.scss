@@ -1,0 +1,41 @@
+.header {
+    &__wrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    &__logo {
+        width: 80px;
+        height: 80px;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__nav-list {
+        display: flex;
+        gap: 20px;
+    }
+    &__list-item {
+        list-style: none;
+    }
+    &__link {
+        color: white;
+        position: relative;
+        &::after {
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: white;
+            transition: width 0.3s ease-in;
+        }
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}
