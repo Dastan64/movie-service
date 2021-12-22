@@ -26,7 +26,7 @@ function App() {
       });
   }
   const moviesList = movies.map((movie) => {
-    return <MovieCard key={movie.filmId} movie={movie} />;
+    return <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />;
   });
   return (
     <div className='app'>

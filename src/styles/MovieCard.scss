@@ -1,4 +1,5 @@
 .movie {
+    position: relative;
     &__title {
         font-size: 1rem;
         margin-top: 10px;
@@ -14,5 +15,24 @@
         max-width: 100%;
         border-radius: 5px;
         height: 300px;
+    }
+    &__thumb {
+        position: absolute;
+        width: 40px;
+        left: -10px;
+        top: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: grey;
+        font-size: 0.8125rem;
+        text-align: center;
+        &--green {
+            background-color: #3bb33b;
+            color: white;
+        }
+        &--red {
+            background-color: #fb0007;
+            color: white;
+        }
     }
 }
