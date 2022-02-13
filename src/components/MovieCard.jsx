@@ -1,7 +1,7 @@
 import '../styles/MovieCard.scss';
 
 function MovieCard({ movie }) {
-  const { nameRu, posterUrlPreview, year, rating } = movie;
+  const { nameRu, posterUrlPreview, year, rating, genres } = movie;
   let classNames = ['movie__thumb'];
 
   if (rating > 7) {
@@ -22,7 +22,11 @@ function MovieCard({ movie }) {
         ''
       )}
       <h2 className='movie__title'>{nameRu}</h2>
-      <p className='movie__subtitle'>{year}</p>
+      {year !== 'null' && (
+        <p className='movie__subtitle'>
+          {year}, {genres[0].genre}
+        </p>
+      )}
     </div>
   );
 }

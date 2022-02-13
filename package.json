@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "6.0"
+    "node-sass": "6.0",
+    "react-router-dom": "^6.2.1"
   }
 }

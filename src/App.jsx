@@ -4,6 +4,8 @@ import './styles/app.scss';
 import Header from './components/Header';
 import MovieCard from './components/MovieCard';
 import { useState } from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
+import MoviePage from './pages/MoviePage';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -25,8 +27,15 @@ function App() {
         setMovies(data.films);
       });
   }
+  <Routes>
+    <Route path='/movieId' element={MoviePage} />
+  </Routes>;
   const moviesList = movies.map((movie) => {
-    return <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />;
+    return (
+      <Link to={`movie/${movie.filmId}`} key={movie.filmId}>
+        <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />;
+      </Link>
+    );
   });
   return (
     <div className='app'>
