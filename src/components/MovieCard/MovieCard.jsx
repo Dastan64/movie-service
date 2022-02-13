@@ -1,4 +1,4 @@
-import '../styles/MovieCard.scss';
+import './MovieCard.scss';
 
 function MovieCard({ movie }) {
   const { nameRu, posterUrlPreview, year, rating, genres } = movie;

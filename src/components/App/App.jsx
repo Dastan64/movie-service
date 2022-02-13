@@ -1,11 +1,13 @@
-import './styles/global.scss';
-import './styles/app.scss';
+import '../../styles/global.scss';
+import './App.scss';
 
-import Header from './components/Header';
-import MovieCard from './components/MovieCard';
 import { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import MoviePage from './pages/MoviePage';
+import MovieDetail from '../MovieDetail/MovieDetail';
+import Header from '../Header/Header';
+import MovieCard from '../MovieCard/MovieCard';
+import Home from '../../pages/Home/Home';
+import MoviesList from '../MoviesList/MoviesList';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -27,16 +29,17 @@ function App() {
         setMovies(data.films);
       });
   }
-  <Routes>
-    <Route path='/movieId' element={MoviePage} />
-  </Routes>;
-  const moviesList = movies.map((movie) => {
-    return (
-      <Link to={`movie/${movie.filmId}`} key={movie.filmId}>
-        <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />;
-      </Link>
-    );
-  });
+
+  const moviesList =
+    movies.length > 0 &&
+    movies.map((movie) => {
+      return (
+        <Link to={`/movie/${movie.filmId}`} key={movie.filmId}>
+          <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />
+        </Link>
+      );
+    });
+
   return (
     <div className='app'>
       <Header
@@ -45,7 +48,14 @@ function App() {
         setQuery={setQuery}
         getMovies={getMovies}
       />
-      <div className='app__grid grid'>{moviesList}</div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path='/movies'
+          element={<MoviesList moviesList={moviesList} />}
+        />
+        <Route path='/movie/:id' element={<MovieDetail />} />
+      </Routes>
     </div>
   );
 }

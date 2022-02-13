@@ -1,8 +1,9 @@
-import logo from '../assets/images/logo.png';
-import HeaderNav from './HeaderNav';
-import HeaderSearch from './HeaderSearch';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/images/logo.png';
+import HeaderNav from '../HeaderNav';
+import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
-import '../styles/Header.scss';
+import './Header.scss';
 
 function Header({ getMovies, query, setQuery }) {
   return (
@@ -10,9 +11,9 @@ function Header({ getMovies, query, setQuery }) {
       <div className='header__wrapper'>
         <div className='header__container'>
           <div className='header__logo-container'>
-            <a href='https://www.kinopoisk.ru' target='_blank' rel='noreferrer'>
+            <Link to='/'>
               <img className='header__logo' src={logo} alt='' />
-            </a>
+            </Link>
           </div>
           <HeaderSearch
             query={query}

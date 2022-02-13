@@ -1,4 +1,4 @@
-import '../styles/HeaderSearch.scss';
+import './HeaderSearch.scss';
 
 function HeaderSearch({ query, setQuery, getMovies }) {
   function handleSubmit(e) {
@@ -10,17 +10,14 @@ function HeaderSearch({ query, setQuery, getMovies }) {
     getMovies(query);
   }
   return (
-    <form
-      className='header__search-container search'
-      action=''
-      onSubmit={handleSubmit}>
+    <form className='header__search-container search' onSubmit={handleSubmit}>
       <input
         type='text'
         name='search-field'
         id='search'
         className='search__input'
         placeholder='Введите название...'
-        autoComplete='off'
+        autoComplete='on'
         onInput={(e) => setQuery(e.target.value.trim())}
       />
       <button type='submit' className='search__btn'>
