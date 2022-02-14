@@ -1,27 +1,105 @@
 import { useParams } from 'react-router-dom';
 import { useFetchMovieDetail } from '../../hooks/useFetchMovieDetail';
+import './MovieDetail.scss';
 
 function MovieDetail() {
   const { id } = useParams();
   const { data, error, isLoading } = useFetchMovieDetail(
     `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`
   );
+  fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/843650/facts', {
+    method: 'GET',
+    headers: {
+      'X-API-KEY': process.env.REACT_APP_API_KEY,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
   if (error) {
     console.error(error);
   }
+
+  let posterUrlPreview,
+    nameRu,
+    nameOriginal,
+    shortDescription,
+    year,
+    countries,
+    genres,
+    slogan,
+    ratingMpaa,
+    filmLength;
+
+  if (data) {
+    console.log(data);
+    ({
+      posterUrlPreview,
+      nameRu,
+      nameOriginal,
+      shortDescription,
+      year,
+      countries,
+      genres,
+      slogan,
+      ratingMpaa,
+      filmLength,
+    } = data);
+  }
+
   return (
     <>
       {isLoading && <h2>Загрузка...</h2>}
       {data && (
         <div className='detail'>
-          <div className='detail__container'>
-            <div className='detail__image-container'>
-              <h2>Изображение фильма с id: {id}</h2>
+          <div className='detail__wrapper'>
+            <div className='detail__container'>
+              <div className='detail__image-container'>
+                {posterUrlPreview && (
+                  <img src={posterUrlPreview} alt={nameRu} />
+                )}
+              </div>
+              <div className='detail__info'>
+                <h2 className='detail__heading'>
+                  {nameRu} ({year})
+                </h2>
+                <h4 className='detail__subheading'>{nameOriginal}</h4>
+                <p className='detail__description'>{shortDescription}</p>
+                <div className='about detail__about'>
+                  <h3 className='about__heading'>О фильме</h3>
+                  <div className='about__info'>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Год производства:</p>
+                      <p>{year}</p>
+                    </div>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Страна:</p>
+                      <p>{countries[0].country}</p>
+                    </div>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Жанр:</p>
+                      <p>{countries[0].country}</p>
+                    </div>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Слоган:</p>
+                      <p>"{slogan}"</p>
+                    </div>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Рейтинг MPAA:</p>
+                      <p>{ratingMpaa.toUpperCase()}</p>
+                    </div>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Время:</p>
+                      <p>{filmLength} мин.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className='detail__text-container'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Inventore tempora dignissimos doloremque magni cumque eaque
-              laudantium dolorem numquam blanditiis? Beatae.
+          </div>
+          <div className='more detail__more'>
+            <div className='more__content'>
+              <h2>Знаете ли вы, что…</h2>
             </div>
           </div>
         </div>
