@@ -5,7 +5,7 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 
 import './Header.scss';
 
-function Header({ getMovies, query, setQuery }) {
+function Header({ query, setQuery }) {
   return (
     <div className='header'>
       <div className='header__wrapper'>
@@ -15,11 +15,7 @@ function Header({ getMovies, query, setQuery }) {
               <img className='header__logo' src={logo} alt='' />
             </Link>
           </div>
-          <HeaderSearch
-            query={query}
-            setQuery={setQuery}
-            getMovies={getMovies}
-          />
+          <HeaderSearch query={query} setQuery={setQuery} />
           <HeaderNav />
         </div>
       </div>

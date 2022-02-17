@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchMovieDetail } from '../../hooks/useFetchMovieDetail';
+import counter from '../../store/counter';
 import './MovieDetail.scss';
 
 function MovieDetail() {
@@ -7,15 +9,9 @@ function MovieDetail() {
   const { data, error, isLoading } = useFetchMovieDetail(
     `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`
   );
-  fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/843650/facts', {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': process.env.REACT_APP_API_KEY,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+  useEffect(() => {
+    counter.getAllMovieInfo(843650);
+  }, [id]);
   if (error) {
     console.error(error);
   }
@@ -84,10 +80,12 @@ function MovieDetail() {
                       <p className='about__info-caption'>Слоган:</p>
                       <p>"{slogan}"</p>
                     </div>
-                    <div className='about__info-line'>
-                      <p className='about__info-caption'>Рейтинг MPAA:</p>
-                      <p>{ratingMpaa.toUpperCase()}</p>
-                    </div>
+                    {ratingMpaa && (
+                      <div className='about__info-line'>
+                        <p className='about__info-caption'>Рейтинг MPAA:</p>
+                        <p>{ratingMpaa.toUpperCase()}</p>
+                      </div>
+                    )}
                     <div className='about__info-line'>
                       <p className='about__info-caption'>Время:</p>
                       <p>{filmLength} мин.</p>
@@ -100,6 +98,9 @@ function MovieDetail() {
           <div className='more detail__more'>
             <div className='more__content'>
               <h2>Знаете ли вы, что…</h2>
+              {Object.keys(counter.movie).length > 2 && (
+                <p>{counter.movie.facts[0].text}</p>
+              )}
             </div>
           </div>
         </div>
