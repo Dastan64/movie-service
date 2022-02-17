@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx"
 
-class Counter {
+class Store {
     movies = [];
     movie = {};
     constructor() {
@@ -42,4 +42,4 @@ class Counter {
         })
     }
 }
-export default new Counter();
+export default new Store();

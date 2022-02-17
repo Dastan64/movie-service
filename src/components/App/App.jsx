@@ -9,16 +9,15 @@ import MovieCard from '../MovieCard/MovieCard';
 import Home from '../../pages/Home/Home';
 import MoviesList from '../MoviesList/MoviesList';
 
-import counter from '../../store/counter';
+import store from '../../store/Store';
 import { observer } from 'mobx-react-lite';
 
 const App = observer(() => {
-  const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
 
   const moviesList =
-    counter.movies.length > 0 &&
-    counter.movies.map((movie) => {
+    store.movies.length > 0 &&
+    store.movies.map((movie) => {
       return (
         <Link to={`/movie/${movie.filmId}`} key={movie.filmId}>
           <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />
@@ -28,7 +27,7 @@ const App = observer(() => {
 
   return (
     <div className='app'>
-      <Header setMovies={setMovies} query={query} setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route

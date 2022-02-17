@@ -1,4 +1,4 @@
-import counter from '../../store/counter';
+import store from '../../store/Store';
 import './HeaderSearch.scss';
 
 function HeaderSearch({ query, setQuery, getMovies }) {
@@ -8,7 +8,7 @@ function HeaderSearch({ query, setQuery, getMovies }) {
       alert('Пустой запрос');
       return;
     }
-    counter.getMovies(query);
+    store.getMovies(query);
   }
   return (
     <form className='header__search-container search' onSubmit={handleSubmit}>

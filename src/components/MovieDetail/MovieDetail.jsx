@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchMovieDetail } from '../../hooks/useFetchMovieDetail';
-import counter from '../../store/counter';
+import store from '../../store/Store';
 import './MovieDetail.scss';
 
 function MovieDetail() {
@@ -10,7 +10,7 @@ function MovieDetail() {
     `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`
   );
   useEffect(() => {
-    counter.getAllMovieInfo(843650);
+    store.getAllMovieInfo(843650);
   }, [id]);
   if (error) {
     console.error(error);
@@ -98,8 +98,8 @@ function MovieDetail() {
           <div className='more detail__more'>
             <div className='more__content'>
               <h2>Знаете ли вы, что…</h2>
-              {Object.keys(counter.movie).length > 2 && (
-                <p>{counter.movie.facts[0].text}</p>
+              {Object.keys(store.movie).length > 2 && (
+                <p>{store.movie.facts[0].text}</p>
               )}
             </div>
           </div>
