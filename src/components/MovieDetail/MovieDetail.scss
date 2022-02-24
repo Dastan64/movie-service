@@ -56,6 +56,17 @@
     &__info-caption {
         color: rgba(255, 255, 255, 0.6);
     }
+    &__sequels {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    &__sequels-heading {
+        font-size: 1.125rem;
+    }
+    &__link {
+        color: #fff;
+    }
 }
 
 .more {
@@ -63,5 +74,26 @@
     &__content {
         padding: 40px 20px;
         color: #000;
+    }
+    &__list-item {
+        position: relative;
+        padding: 16px 0 16px 24px;
+        border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+        list-style-position: inside;
+        list-style-type: none;
+        color: #333;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        &::before {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(31, 31, 31, 0.4);
+        }
     }
 }

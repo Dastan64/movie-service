@@ -19,7 +19,10 @@ const App = observer(() => {
     store.movies.length > 0 &&
     store.movies.map((movie) => {
       return (
-        <Link to={`/movie/${movie.filmId}`} key={movie.filmId}>
+        <Link
+          className='app__link'
+          to={`/movie/${movie.filmId}`}
+          key={movie.filmId}>
           <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />
         </Link>
       );

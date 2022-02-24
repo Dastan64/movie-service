@@ -22,7 +22,7 @@ function MovieCard({ movie }) {
         ''
       )}
       <h2 className='movie__title'>{nameRu}</h2>
-      {year !== 'null' && (
+      {year !== 'null' && genres && (
         <p className='movie__subtitle'>
           {year}, {genres[0].genre}
         </p>

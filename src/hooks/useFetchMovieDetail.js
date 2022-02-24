@@ -8,7 +8,7 @@ export function useFetchMovieDetail(url, id) {
     useEffect(() => {
         setIsLoading(true);
         fetch(
-            url,
+            `${url}${id}`,
             {
                 method: 'GET',
                 headers: {
@@ -22,6 +22,6 @@ export function useFetchMovieDetail(url, id) {
                 setData(data);
                 setIsLoading(false)
             }).catch(error => setError(error)).finally(setIsLoading(false));
-    }, [url])
+    }, [url, id])
     return { data, error, isLoading }
 }

@@ -1,17 +1,22 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { useFetchMovieDetail } from '../../hooks/useFetchMovieDetail';
 import store from '../../store/Store';
+import MovieCard from '../MovieCard/MovieCard';
 import './MovieDetail.scss';
 
 function MovieDetail() {
   const { id } = useParams();
   const { data, error, isLoading } = useFetchMovieDetail(
-    `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`
+    `https://kinopoiskapiunofficial.tech/api/v2.2/films/`,
+    id
   );
+
   useEffect(() => {
-    store.getAllMovieInfo(843650);
-  }, [id]);
+    store.getAllMovieInfo(id);
+  }, []);
+
   if (error) {
     console.error(error);
   }
@@ -28,7 +33,6 @@ function MovieDetail() {
     filmLength;
 
   if (data) {
-    console.log(data);
     ({
       posterUrlPreview,
       nameRu,
@@ -90,6 +94,26 @@ function MovieDetail() {
                       <p className='about__info-caption'>Время:</p>
                       <p>{filmLength} мин.</p>
                     </div>
+                    {store.movie.sequels && (
+                      <>
+                        <h4 className='about__sequels-heading'>
+                          Сиквелы и приквелы{' '}
+                          <span style={{ color: 'rgba(255,254,254,.4)' }}>
+                            {store.movie.sequels.length}
+                          </span>{' '}
+                        </h4>
+                        <div className='about__sequels'>
+                          {store.movie.sequels.map((sequel) => (
+                            <Link
+                              className='about__link'
+                              to={`/movie/${sequel.filmId}`}
+                              key={sequel.filmId}>
+                              <MovieCard movie={sequel} />
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -97,9 +121,18 @@ function MovieDetail() {
           </div>
           <div className='more detail__more'>
             <div className='more__content'>
-              <h2>Знаете ли вы, что…</h2>
-              {Object.keys(store.movie).length > 2 && (
-                <p>{store.movie.facts[0].text}</p>
+              {store.movie.facts && (
+                <>
+                  <h2>Знаете ли вы, что...</h2>
+                  <ul className='more__list'>
+                    {store.movie.facts.map((fact) => (
+                      <li
+                        className='more__list-item'
+                        key={uuidv4()}
+                        dangerouslySetInnerHTML={{ __html: fact.text }}></li>
+                    ))}
+                  </ul>
+                </>
               )}
             </div>
           </div>
