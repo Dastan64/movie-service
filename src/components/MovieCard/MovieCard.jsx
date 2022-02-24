@@ -14,7 +14,7 @@ function MovieCard({ movie }) {
       <div className='movie__poster-container'>
         <img className='movie__poster' src={posterUrlPreview} alt='' />
       </div>
-      {rating !== 'null' ? (
+      {rating && rating !== 'null' ? (
         <div className={classNames.join(' ')}>
           <p className='movie__thumb-number'>{rating}</p>
         </div>

@@ -15,7 +15,7 @@ function MovieDetail() {
 
   useEffect(() => {
     store.getAllMovieInfo(id);
-  }, []);
+  });
 
   if (error) {
     console.error(error);
