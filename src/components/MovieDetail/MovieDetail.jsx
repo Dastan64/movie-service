@@ -3,7 +3,9 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import store from '../../store/Store';
+import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';
+import SimilarsList from '../SimilarsList/SimilarsList';
 import './MovieDetail.scss';
 
 const MovieDetail = observer(() => {
@@ -27,6 +29,7 @@ const MovieDetail = observer(() => {
 
   const sequels = store.movie.sequels;
   const facts = store.movie.facts;
+  const similars = store.movie.similars;
 
   return (
     <div className='detail'>
@@ -70,7 +73,7 @@ const MovieDetail = observer(() => {
                   <p className='about__info-caption'>Время:</p>
                   <p>{filmLength} мин.</p>
                 </div>
-                <SequelsList sequels={sequels} />
+                {sequels.length > 0 && <SequelsList sequels={sequels} />}
               </div>
             </div>
           </div>
@@ -78,17 +81,12 @@ const MovieDetail = observer(() => {
       </div>
       <div className='more detail__more'>
         <div className='more__content'>
-          <>
-            <h2>Знаете ли вы, что...</h2>
-            <ul className='more__list'>
-              {facts.map((fact) => (
-                <li
-                  className='more__list-item'
-                  key={uuidv4()}
-                  dangerouslySetInnerHTML={{ __html: fact.text }}></li>
-              ))}
-            </ul>
-          </>
+          <h2>Знаете ли вы, что...</h2>
+          {facts.length > 0 && <FactsList facts={facts} />}
+          <div className='more__similars'>
+            <h2>Если вам понравился этот фильм {similars.length}</h2>
+            {similars.length > 0 && <SimilarsList similars={similars} />}
+          </div>
         </div>
       </div>
     </div>

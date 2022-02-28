@@ -96,4 +96,17 @@
             background-color: rgba(31, 31, 31, 0.4);
         }
     }
+    &__similars {
+        margin-top: 30px;
+    }
+    &__movie-similars {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 30px;
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
 }
