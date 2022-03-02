@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import store from '../../store/Store';
 import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';

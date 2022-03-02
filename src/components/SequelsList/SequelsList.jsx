@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/scss';
+import 'swiper/css/navigation';
 import MovieCard from '../MovieCard/MovieCard';
 
 function SequelsList({ sequels }) {
@@ -11,15 +15,23 @@ function SequelsList({ sequels }) {
         </span>{' '}
       </h4>
       <div className='about__sequels'>
-        {sequels &&
-          sequels.map((sequel) => (
-            <Link
-              className='about__link'
-              to={`/movie/${sequel.filmId}`}
-              key={sequel.filmId}>
-              <MovieCard movie={sequel} />
-            </Link>
-          ))}
+        <Swiper
+          modules={[Navigation]}
+          navigation
+          slidesPerView={3}
+          spaceBetween={8}>
+          {sequels &&
+            sequels.map((sequel) => (
+              <SwiperSlide key={sequel.filmId}>
+                <Link
+                  className='about__link'
+                  to={`/movie/${sequel.filmId}`}
+                  key={sequel.filmId}>
+                  <MovieCard movie={sequel} />
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </>
   );

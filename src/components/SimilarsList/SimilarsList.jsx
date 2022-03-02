@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/scss';
+import 'swiper/css/navigation';
 import MovieCard from '../MovieCard/MovieCard';
 
 function SimilarsList({ similars }) {
   return (
     <div className='more__movie-similars'>
-      {similars.map((similarMovie) => {
-        return (
-          <Link to={`/movie/${similarMovie.filmId}`} key={similarMovie.filmId}>
-            <MovieCard movie={similarMovie} />
-          </Link>
-        );
-      })}
+      <Swiper modules={[Navigation]} navigation slidesPerView={5}>
+        {similars.map((similarMovie) => {
+          return (
+            <SwiperSlide key={similarMovie.filmId}>
+              <Link to={`/movie/${similarMovie.filmId}`}>
+                <MovieCard movie={similarMovie} />
+              </Link>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 }
