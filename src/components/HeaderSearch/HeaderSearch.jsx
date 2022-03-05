@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import store from '../../store/Store';
 import './HeaderSearch.scss';
 
 function HeaderSearch({ query, setQuery, getMovies }) {
+  let navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
     if (!query) {
@@ -9,6 +11,7 @@ function HeaderSearch({ query, setQuery, getMovies }) {
       return;
     }
     store.getMovies(query);
+    navigate('/movies');
   }
   return (
     <form className='header__search-container search' onSubmit={handleSubmit}>
