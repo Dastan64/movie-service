@@ -8,6 +8,7 @@ class Store {
             facts: [],
             similars: [],
             sequels: [],
+            boxOffice: [],
         };
         makeAutoObservable(this);
     }
@@ -31,7 +32,7 @@ class Store {
     }
 
     getAllMovieInfo(id) {
-        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`];
+        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/box_office`];
 
         Promise.allSettled(urls.map(url => fetch(url, {
             method: 'GET',
@@ -41,11 +42,12 @@ class Store {
             },
         }))).then(responseArr => {
             return Promise.allSettled(responseArr.map(r => r.value.json()))
-        }).then(([info, facts, similars, sequels]) => {
+        }).then(([info, facts, similars, sequels, boxOffice]) => {
             runInAction(() => this.movie.info = info.value)
             runInAction(() => this.movie.facts = facts.value.items)
             runInAction(() => this.movie.similars = similars.value.items)
             runInAction(() => this.movie.sequels = sequels.value)
+            runInAction(() => this.movie.boxOffice = boxOffice.value.items)
         })
     }
 

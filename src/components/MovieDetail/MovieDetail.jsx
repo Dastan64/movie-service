@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import store from '../../store/Store';
+import BoxOffice from '../BoxOffice/BoxOffice';
 import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';
 import SimilarsList from '../SimilarsList/SimilarsList';
@@ -40,6 +41,7 @@ const MovieDetail = observer(() => {
   const sequels = store.movie.sequels;
   const facts = store.movie.facts;
   const similars = store.movie.similars;
+  const boxOffice = store.movie.boxOffice;
 
   return (
     <div className='detail'>
@@ -73,6 +75,8 @@ const MovieDetail = observer(() => {
                   <p className='about__info-caption'>Слоган:</p>
                   <p>"{slogan}"</p>
                 </div>
+                {boxOffice.length > 0 && <BoxOffice boxOffice={boxOffice} />}
+
                 {ratingMpaa && (
                   <div className='about__info-line'>
                     <p className='about__info-caption'>Рейтинг MPAA:</p>
