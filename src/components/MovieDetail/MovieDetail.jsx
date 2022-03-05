@@ -33,6 +33,7 @@ const MovieDetail = observer(() => {
     shortDescription,
     year,
     countries,
+    genres,
     slogan,
     ratingMpaa,
     filmLength,
@@ -68,6 +69,14 @@ const MovieDetail = observer(() => {
                     <div className='about__info-line'>
                       <p className='about__info-caption'>Страна:</p>
                       <p>{countries[0].country}</p>
+                    </div>
+                  </>
+                )}
+                {genres && (
+                  <>
+                    <div className='about__info-line'>
+                      <p className='about__info-caption'>Жанр:</p>
+                      <p>{genres.map((genre) => genre.genre).join(', ')}</p>
                     </div>
                   </>
                 )}
