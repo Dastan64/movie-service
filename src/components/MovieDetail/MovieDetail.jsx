@@ -36,6 +36,7 @@ const MovieDetail = observer(() => {
     genres,
     slogan,
     ratingMpaa,
+    ratingAgeLimits,
     filmLength,
   } = store.movie.info;
 
@@ -53,7 +54,7 @@ const MovieDetail = observer(() => {
           </div>
           <div className='detail__info'>
             <h2 className='detail__heading'>
-              {nameRu} ({year})
+              {nameRu} <br />({year})
             </h2>
             <h4 className='detail__subheading'>{nameOriginal}</h4>
             <p className='detail__description'>{shortDescription}</p>
@@ -68,7 +69,9 @@ const MovieDetail = observer(() => {
                   <>
                     <div className='about__info-line'>
                       <p className='about__info-caption'>Страна:</p>
-                      <p>{countries[0].country}</p>
+                      <p>
+                        {countries.map((country) => country.country).join(', ')}
+                      </p>
                     </div>
                   </>
                 )}
@@ -86,10 +89,25 @@ const MovieDetail = observer(() => {
                 </div>
                 {boxOffice.length > 0 && <BoxOffice boxOffice={boxOffice} />}
 
+                {ratingAgeLimits && (
+                  <div className='about__info-line'>
+                    <p className='about__info-caption'>Возраст:</p>
+                    <p className='about__rating'>
+                      {/\d/g.test(ratingAgeLimits)
+                        ? ratingAgeLimits.substring(3) + '+'
+                        : ratingAgeLimits}
+                    </p>
+                  </div>
+                )}
                 {ratingMpaa && (
                   <div className='about__info-line'>
                     <p className='about__info-caption'>Рейтинг MPAA:</p>
-                    <p>{ratingMpaa.toUpperCase()}</p>
+                    <p className='about__rating'>
+                      {ratingMpaa
+                        .toUpperCase()
+                        .match(/[a-z]+|\d+/gi)
+                        .join('-')}
+                    </p>
                   </div>
                 )}
                 <div className='about__info-line'>
