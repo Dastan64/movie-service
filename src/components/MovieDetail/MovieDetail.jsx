@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import store from '../../store/Store';
 import FactsList from '../FactsList/FactsList';
@@ -9,6 +9,17 @@ import './MovieDetail.scss';
 
 const MovieDetail = observer(() => {
   const { id } = useParams();
+  const [isShort, setIsShort] = useState(true);
+  const btnRef = useRef(null);
+
+  function handleMoreFacts() {
+    setIsShort(!isShort);
+    if (btnRef.current.textContent === 'Показать ещё') {
+      btnRef.current.textContent = 'Меньше';
+    } else {
+      btnRef.current.textContent = 'Показать ещё';
+    }
+  }
 
   useEffect(() => {
     store.getAllMovieInfo(id);
@@ -81,7 +92,14 @@ const MovieDetail = observer(() => {
       <div className='more detail__more'>
         <div className='more__content'>
           <h2>Знаете ли вы, что...</h2>
-          {facts.length > 0 && <FactsList facts={facts} />}
+          {facts.length > 0 && <FactsList facts={facts} isShort={isShort} />}
+          <button
+            type='button'
+            className={`more__btn ${isShort ? '' : 'more__btn--rotated'}`}
+            onClick={handleMoreFacts}
+            ref={btnRef}>
+            Показать ещё
+          </button>
           <div className='more__similars'>
             <h2>Если вам понравился этот фильм {similars.length}</h2>
             {similars.length > 0 && <SimilarsList similars={similars} />}
