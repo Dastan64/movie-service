@@ -94,7 +94,10 @@ const MovieDetail = observer(() => {
                 )}
                 <div className='about__info-line'>
                   <p className='about__info-caption'>Время:</p>
-                  <p>{filmLength} мин.</p>
+                  <p>
+                    {filmLength} мин. / 0{Math.floor(filmLength / 60)}:
+                    {filmLength % 60}
+                  </p>
                 </div>
                 {sequels.length > 0 && <SequelsList sequels={sequels} />}
               </div>

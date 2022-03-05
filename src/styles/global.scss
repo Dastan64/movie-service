@@ -4,10 +4,28 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Gotham Pro Regular";
+    src: url("../assets/fonts/GothamPro-Regular.ttf") format("ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Gotham Pro Bold";
+    src: url("../assets/fonts/GothamPro-Bold.ttf") format("ttf");
+    font-weight: 700;
+}
+
 body {
-    font-family: "Rubik", Arial, Helvetica, sans-serif;
+    font-family: "Gotham Pro Regular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000;
     color: white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Gotham Pro Bold", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -16,5 +34,5 @@ a {
 
 input,
 button {
-    font-family: "Rubik", Arial, Helvetica, sans-serif;
+    font-family: "Gotham Pro Regular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
