@@ -5,6 +5,8 @@ function BoxOffice({ boxOffice }) {
         return 'Бюджет';
       case 'USA':
         return 'Сборы в США';
+      case 'MARKETING':
+        return 'Маркетинг';
       case 'WORLD':
         return 'Сборы в мире';
       case 'RUS':
