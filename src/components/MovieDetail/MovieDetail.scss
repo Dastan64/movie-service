@@ -33,7 +33,6 @@
     &__description {
         margin-bottom: 24px;
         font-size: 1.125rem;
-        line-height: 1.5;
         max-width: 60ch;
     }
 }
@@ -80,6 +79,30 @@
         padding: 40px 20px;
         color: #000;
     }
+    &__full-description {
+        margin-bottom: 20px;
+        max-width: 70%;
+    }
+    &__rating-heading {
+        margin-bottom: 10px;
+    }
+    &__rating-number {
+        margin-bottom: 8px;
+        color: #777;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 700;
+    }
+    &__ratings {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: #777;
+        margin-bottom: 20px;
+        span {
+            font-weight: 700;
+        }
+    }
     &__list {
         max-height: auto;
         &--short {
@@ -95,7 +118,6 @@
         list-style-type: none;
         color: #333;
         font-size: 0.875rem;
-        line-height: 1.25rem;
         &::before {
             position: absolute;
             top: 20px;

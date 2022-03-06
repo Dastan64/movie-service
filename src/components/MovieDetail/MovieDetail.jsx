@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import store from '../../store/Store';
 import { formatFilmLength } from '../../utils/formatFilmLength';
+import { formatMoneyAmount } from '../../utils/formatMoneyAmount';
 import BoxOffice from '../BoxOffice/BoxOffice';
 import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';
@@ -32,10 +33,15 @@ const MovieDetail = observer(() => {
     nameRu,
     nameOriginal,
     shortDescription,
+    description,
     year,
     countries,
     genres,
     slogan,
+    ratingKinopoisk,
+    ratingKinopoiskVoteCount,
+    ratingImdb,
+    ratingImdbVoteCount,
     ratingMpaa,
     ratingAgeLimits,
     filmLength,
@@ -123,6 +129,16 @@ const MovieDetail = observer(() => {
       </div>
       <div className='more detail__more'>
         <div className='more__content'>
+          <p className='more__full-description'>{description}</p>
+          <h2 className='more__rating-heading'>Рейтинг фильма</h2>
+          <p className='more__rating-number'>{ratingKinopoisk}</p>
+          <div className='more__ratings'>
+            <p>{formatMoneyAmount(ratingKinopoiskVoteCount)} оценок</p>
+            <p>
+              <span>IMDb: {ratingImdb}</span>{' '}
+              {formatMoneyAmount(ratingImdbVoteCount)} оценок
+            </p>
+          </div>
           <h2>Знаете ли вы, что...</h2>
           {facts.length > 0 && <FactsList facts={facts} isShort={isShort} />}
           <button
