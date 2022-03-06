@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .detail {
     &__wrapper {
         padding: 0 20px 40px 20px;
@@ -92,6 +93,21 @@
         font-size: 3rem;
         line-height: 1;
         font-weight: 700;
+        &--low {
+            color: $lowRating;
+        }
+        &--average {
+            color: $averageRating;
+        }
+        &--high {
+            color: $highRating;
+        }
+        &--golden {
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: $goldenRating;
+        }
     }
     &__ratings {
         display: flex;

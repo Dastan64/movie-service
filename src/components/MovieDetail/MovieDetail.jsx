@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import clsx from 'clsx';
 import store from '../../store/Store';
 import { formatFilmLength } from '../../utils/formatFilmLength';
 import { formatMoneyAmount } from '../../utils/formatMoneyAmount';
@@ -46,11 +47,17 @@ const MovieDetail = observer(() => {
     ratingAgeLimits,
     filmLength,
   } = store.movie.info;
-
   const sequels = store.movie.sequels;
   const facts = store.movie.facts;
   const similars = store.movie.similars;
   const boxOffice = store.movie.boxOffice;
+
+  const ratingNumberStyle = clsx({
+    'more__rating-number--low': ratingKinopoisk < 5,
+    'more__rating-number--average': ratingKinopoisk >= 5 && ratingKinopoisk < 7,
+    'more__rating-number--high': ratingKinopoisk >= 7 && ratingKinopoisk < 8.5,
+    'more__rating-number--golden': ratingKinopoisk >= 8.5,
+  });
 
   return (
     <div className='detail'>
@@ -131,13 +138,19 @@ const MovieDetail = observer(() => {
         <div className='more__content'>
           <p className='more__full-description'>{description}</p>
           <h2 className='more__rating-heading'>Рейтинг фильма</h2>
-          <p className='more__rating-number'>{ratingKinopoisk}</p>
+          <p className={`more__rating-number ${ratingNumberStyle}`}>
+            {ratingKinopoisk}
+          </p>
           <div className='more__ratings'>
-            <p>{formatMoneyAmount(ratingKinopoiskVoteCount)} оценок</p>
-            <p>
-              <span>IMDb: {ratingImdb}</span>{' '}
-              {formatMoneyAmount(ratingImdbVoteCount)} оценок
-            </p>
+            {ratingKinopoiskVoteCount && (
+              <p>{formatMoneyAmount(ratingKinopoiskVoteCount)} оценок</p>
+            )}
+            {ratingImdbVoteCount && (
+              <p>
+                <span>IMDb: {ratingImdb}</span>{' '}
+                {formatMoneyAmount(ratingImdbVoteCount)} оценок
+              </p>
+            )}
           </div>
           <h2>Знаете ли вы, что...</h2>
           {facts.length > 0 && <FactsList facts={facts} isShort={isShort} />}
