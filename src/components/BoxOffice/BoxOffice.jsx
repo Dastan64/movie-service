@@ -1,23 +1,7 @@
-function BoxOffice({ boxOffice }) {
-  const getBoxOfficeType = (boxOffice) => {
-    switch (boxOffice.type) {
-      case 'BUDGET':
-        return 'Бюджет';
-      case 'USA':
-        return 'Сборы в США';
-      case 'MARKETING':
-        return 'Маркетинг';
-      case 'WORLD':
-        return 'Сборы в мире';
-      case 'RUS':
-        return 'Сборы в России';
-      default:
-        break;
-    }
-  };
+import { formatMoneyAmount } from '../../utils/formatMoneyAmount';
+import { getBoxOfficeType } from '../../utils/getBoxOfficeType';
 
-  const formatNumber = (number) =>
-    number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+function BoxOffice({ boxOffice }) {
   return (
     <>
       {boxOffice.map((box) => (
@@ -25,7 +9,7 @@ function BoxOffice({ boxOffice }) {
           <p className='about__info-caption'>{getBoxOfficeType(box)}:</p>
           <p>
             {box.symbol}
-            {formatNumber(box.amount)}
+            {formatMoneyAmount(box.amount)}
           </p>
         </div>
       ))}

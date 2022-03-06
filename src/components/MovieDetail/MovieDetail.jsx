@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import store from '../../store/Store';
+import { formatFilmLength } from '../../utils/formatFilmLength';
 import BoxOffice from '../BoxOffice/BoxOffice';
 import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';
@@ -112,10 +113,7 @@ const MovieDetail = observer(() => {
                 )}
                 <div className='about__info-line'>
                   <p className='about__info-caption'>Время:</p>
-                  <p>
-                    {filmLength} мин. / 0{Math.floor(filmLength / 60)}:
-                    {filmLength % 60}
-                  </p>
+                  <p>{formatFilmLength(filmLength)}</p>
                 </div>
                 {sequels.length > 0 && <SequelsList sequels={sequels} />}
               </div>
