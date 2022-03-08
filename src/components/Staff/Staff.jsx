@@ -5,6 +5,7 @@ function Staff({ staff }) {
   const writers = staff
     .filter((staff) => staff.professionKey === 'WRITER')
     .slice(0, 3);
+  console.log(writers);
   const producers = staff
     .filter((staff) => staff.professionKey === 'PRODUCER')
     .slice(0, 3);
@@ -29,10 +30,10 @@ function Staff({ staff }) {
     // ...designers,
     // ...editors,
   ];
-  console.log(writers);
+  console.table(writers);
   return (
     <>
-      {allStaff.map((staff) => (
+      {writers.map((staff) => (
         <div className='about__info-line'>
           <p className='about__info-caption'>{staff.professionText}</p>
           <p>{staff.nameRu}</p>

@@ -1,0 +1,10 @@
+.more {
+    &__reviews-heading {
+        margin-bottom: 20px;
+    }
+    &__reviews-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

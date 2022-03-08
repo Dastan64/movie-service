@@ -9,9 +9,9 @@ import BoxOffice from '../BoxOffice/BoxOffice';
 import FactsList from '../FactsList/FactsList';
 import SequelsList from '../SequelsList/SequelsList';
 import SimilarsList from '../SimilarsList/SimilarsList';
-import Staff from '../Staff/Staff';
 import './MovieDetail.scss';
 import Loader from '../Loader/Loader';
+import ReviewsList from '../Reviews/ReviewsList';
 
 const MovieDetail = observer(() => {
   const { id } = useParams();
@@ -54,6 +54,7 @@ const MovieDetail = observer(() => {
   const similars = store.movie.similars;
   const boxOffice = store.movie.boxOffice;
   const staff = store.movie.staff;
+  const reviews = store.movie.reviews;
 
   const ratingNumberStyle = clsx({
     'more__rating-number--low': ratingKinopoisk < 5,
@@ -112,7 +113,7 @@ const MovieDetail = observer(() => {
                       <p className='about__info-caption'>Слоган:</p>
                       <p>"{slogan}"</p>
                     </div>
-                    {staff.length > 0 && <Staff staff={staff} />}
+                    {/* {staff.length > 0 && <Staff staff={staff} />} */}
                     {boxOffice.length > 0 && (
                       <BoxOffice boxOffice={boxOffice} />
                     )}
@@ -183,6 +184,7 @@ const MovieDetail = observer(() => {
                 <h2>Если вам понравился этот фильм {similars.length}</h2>
                 {similars.length > 0 && <SimilarsList similars={similars} />}
               </div>
+              {reviews.length > 0 && <ReviewsList reviews={reviews} />}
             </div>
           </div>
         </div>
