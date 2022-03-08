@@ -9,7 +9,9 @@ class Store {
             similars: [],
             sequels: [],
             boxOffice: [],
+            staff: [],
         };
+        this.hasLoaded = false;
         makeAutoObservable(this);
     }
     getMovies(query) {
@@ -32,7 +34,8 @@ class Store {
     }
 
     getAllMovieInfo(id) {
-        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/box_office`];
+        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/box_office`, `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}`
+        ];
 
         Promise.allSettled(urls.map(url => fetch(url, {
             method: 'GET',
@@ -42,12 +45,15 @@ class Store {
             },
         }))).then(responseArr => {
             return Promise.allSettled(responseArr.map(r => r.value.json()))
-        }).then(([info, facts, similars, sequels, boxOffice]) => {
+        }).then(([info, facts, similars, sequels, boxOffice, staff]) => {
             runInAction(() => this.movie.info = info.value)
             runInAction(() => this.movie.facts = facts.value.items)
             runInAction(() => this.movie.similars = similars.value.items)
             runInAction(() => this.movie.sequels = sequels.value)
             runInAction(() => this.movie.boxOffice = boxOffice.value.items)
+            runInAction(() => this.movie.staff = staff.value)
+            this.hasLoaded = true;
+
         })
     }
 

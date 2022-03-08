@@ -1,4 +1,4 @@
-import { formatMoneyAmount } from '../../utils/formatMoneyAmount';
+import { formatNumber } from '../../utils/formatNumber';
 import { getBoxOfficeType } from '../../utils/getBoxOfficeType';
 
 function BoxOffice({ boxOffice }) {
@@ -9,7 +9,7 @@ function BoxOffice({ boxOffice }) {
           <p className='about__info-caption'>{getBoxOfficeType(box)}:</p>
           <p>
             {box.symbol}
-            {formatMoneyAmount(box.amount)}
+            {formatNumber(box.amount)}
           </p>
         </div>
       ))}
