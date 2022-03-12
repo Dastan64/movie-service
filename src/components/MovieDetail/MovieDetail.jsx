@@ -1,15 +1,23 @@
+//Core
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import store from '../../store/Store';
+
+//Styles
+import './MovieDetail.scss';
+
+//Utils
 import { formatFilmLength } from '../../utils/formatFilmLength';
 import { formatNumber } from '../../utils/formatNumber';
+
+//Components
 import BoxOffice from '../BoxOffice/BoxOffice';
 import FactsList from '../FactsList/FactsList';
+import Staff from '../Staff/Staff';
 import SequelsList from '../SequelsList/SequelsList';
 import SimilarsList from '../SimilarsList/SimilarsList';
-import './MovieDetail.scss';
 import Loader from '../Loader/Loader';
 import ReviewsList from '../Reviews/ReviewsList';
 
@@ -113,7 +121,7 @@ const MovieDetail = observer(() => {
                       <p className='about__info-caption'>Слоган:</p>
                       <p>"{slogan}"</p>
                     </div>
-                    {/* {staff.length > 0 && <Staff staff={staff} />} */}
+                    {staff.length > 0 && <Staff staff={staff} />}
                     {boxOffice.length > 0 && (
                       <BoxOffice boxOffice={boxOffice} />
                     )}
@@ -163,8 +171,8 @@ const MovieDetail = observer(() => {
                   )}
                   {ratingImdbVoteCount && (
                     <p>
-                      <span>IMDb: {ratingImdb}</span>{' '}
-                      {formatNumber(ratingImdbVoteCount)} оценок
+                      <span>IMDb: {ratingImdb}</span> (
+                      {formatNumber(ratingImdbVoteCount)} оценок)
                     </p>
                   )}
                 </div>
