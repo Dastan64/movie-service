@@ -1,14 +1,8 @@
 @import "../../styles/variables.scss";
+
 .detail {
     &__wrapper {
         padding: 0 20px 40px 20px;
-    }
-    &__image-container {
-        img {
-            display: block;
-            max-width: 100%;
-            border-radius: 3px;
-        }
     }
     &__container {
         display: grid;
@@ -18,18 +12,21 @@
             grid-template-columns: 100%;
         }
     }
-    &__info {
-        flex-basis: 50%;
+    &__image-container {
+        img {
+            display: block;
+            max-width: 100%;
+            border-radius: 3px;
+        }
     }
     &__heading {
         font-size: clamp(24px, 4vw, 40px);
-        margin-bottom: 12px;
         max-width: 30ch;
     }
     &__subheading {
-        margin-bottom: 16px;
+        margin: 12px 0 16px 0;
         font-size: 1.125rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: $grey;
     }
     &__description {
         margin-bottom: 24px;
@@ -54,8 +51,13 @@
             margin-bottom: 16px;
         }
     }
+    &__slogan,
+    &__time {
+        color: $grey;
+    }
     &__info-caption {
-        color: rgba(255, 255, 255, 0.6);
+        width: 160px;
+        color: $grey;
     }
     &__rating {
         border: 1px solid rgba(222, 222, 222, 0.9);
@@ -70,127 +72,23 @@
         font-size: 1.125rem;
     }
     &__link {
-        color: #fff;
+        color: $white;
     }
 }
 
 .more {
-    background-color: #fff;
+    background-color: $white;
     &__content {
         padding: 40px 20px;
-        color: #000;
+        color: $black;
     }
     &__full-description {
         margin-bottom: 20px;
         max-width: 70%;
     }
-    &__rating-container {
-        border-bottom: 1px solid rgba(31, 31, 31, 0.1);
-        padding-bottom: 30px;
-        margin-bottom: 20px;
-    }
-    &__rating-heading {
-        margin-bottom: 10px;
-    }
-    &__rating-number {
-        margin-bottom: 8px;
-        color: #777;
-        font-size: 3rem;
-        line-height: 1;
-        font-weight: 700;
-        &--low {
-            color: $lowRating;
-        }
-        &--average {
-            color: $averageRating;
-        }
-        &--high {
-            color: $highRating;
-        }
-        &--golden {
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-            background-image: $goldenRating;
-        }
-    }
-    &__ratings {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        color: #777;
-        margin-bottom: 20px;
-        span {
-            font-weight: 700;
-        }
-    }
-    &__list {
-        max-height: auto;
-        &--short {
-            max-height: 320px;
-            overflow-y: hidden;
-        }
-    }
-    &__list-item {
-        position: relative;
-        padding: 16px 0 16px 24px;
-        border-bottom: 1px solid rgba(31, 31, 31, 0.1);
-        list-style-position: inside;
-        list-style-type: none;
-        color: #333;
-        font-size: 0.875rem;
-        &::before {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            content: "";
-            display: block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: rgba(31, 31, 31, 0.4);
-        }
-    }
-    &__btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        margin: 10px 0;
-        padding: 7px 16px 9px 11px;
-        background-color: rgba(242, 242, 242, 0.9);
-        color: rgba(51, 51, 51, 0.9);
-        cursor: pointer;
-        &::before {
-            content: "";
-            display: block;
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            background-image: url("../../assets/images/small-arrow-down.svg");
-            background-repeat: no-repeat;
-            background-position: center center;
-        }
-        &--rotated {
-            &::before {
-                transform: rotate(180deg);
-            }
-        }
-        &:hover {
-            background-color: #e6e6e6;
-        }
-    }
+    &__rating,
+    &__faacts,
     &__similars {
-        margin-top: 30px;
-    }
-    &__movie-similars {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-top: 30px;
-        a {
-            text-decoration: none;
-            color: #000;
-        }
+        margin: 30px 0;
     }
 }

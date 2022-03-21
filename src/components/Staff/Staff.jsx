@@ -10,35 +10,33 @@ function Staff({ staff }) {
   ];
   return (
     <>
-      {roles.map((role) => {
+      {roles.map((role, index) => {
         const professions = staff.filter(
           (staff) => staff.professionKey === role
         );
 
         return (
-          <>
-            <div className='about__info-line'>
-              <p className='about__info-caption'>
-                {professions[0].professionText}:
+          <div className='about__info-line' key={index}>
+            <p className='about__info-caption'>
+              {professions[0].professionText}:
+            </p>
+            {professions.length > 3 ? (
+              <p>
+                {professions
+                  .map((person) => person.nameRu)
+                  .slice(0, 3)
+                  .join(', ')}
+                ...
               </p>
-              {professions.length > 3 ? (
-                <p>
-                  {professions
-                    .map((person) => person.nameRu)
-                    .slice(0, 3)
-                    .join(', ')}
-                  ...
-                </p>
-              ) : (
-                <p>
-                  {professions
-                    .map((person) => person.nameRu)
-                    .slice(0, 3)
-                    .join(', ')}
-                </p>
-              )}
-            </div>
-          </>
+            ) : (
+              <p>
+                {professions
+                  .map((person) => person.nameRu)
+                  .slice(0, 3)
+                  .join(', ')}
+              </p>
+            )}
+          </div>
         );
       })}
     </>

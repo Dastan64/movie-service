@@ -1,10 +1,20 @@
 .more {
+    &__reviews {
+        margin-top: 30px;
+    }
     &__reviews-heading {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
         margin-bottom: 20px;
     }
     &__reviews-list {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+    }
+    &__reviews-icon {
+        width: 32px;
+        height: 32px;
     }
 }

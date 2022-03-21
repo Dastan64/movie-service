@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.similars {
+    &__movie-similars {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 30px;
+        a {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+}

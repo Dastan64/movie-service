@@ -29,6 +29,11 @@ h4 {
     font-family: "Gotham Pro Bold", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    line-height: 43px;
+}
+
 a {
     text-decoration: none;
 }

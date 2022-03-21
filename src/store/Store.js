@@ -15,6 +15,9 @@ class Store {
         this.hasLoaded = false;
         makeAutoObservable(this);
     }
+    addMovies(data) {
+        this.movies = [...data];
+    }
     getMovies(query) {
         fetch(
             `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${query}`,
@@ -28,14 +31,12 @@ class Store {
         )
             .then((response) => response.json())
             .then((data) => {
-                runInAction(() => {
-                    this.movies = [...data.films];
-                });
+                this.addMovies(data.films)
             });
     }
 
     getAllMovieInfo(id) {
-        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/box_office`, `https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${id}`, `https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=3`
+        const urls = [`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/facts`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/similars`, `https://kinopoiskapiunofficial.tech/api/v2.1/films/${id}/sequels_and_prequels`, `https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}/box_office`, `https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=1`
         ];
 
         Promise.allSettled(urls.map(url => fetch(url, {
@@ -46,17 +47,38 @@ class Store {
             },
         }))).then(responseArr => {
             return Promise.allSettled(responseArr.map(r => r.value.json()))
-        }).then(([info, facts, similars, sequels, boxOffice, staff, reviews]) => {
+        }).then(([info, facts, similars, sequels, boxOffice, reviews]) => {
             runInAction(() => this.movie.info = info.value)
             runInAction(() => this.movie.facts = facts.value.items)
             runInAction(() => this.movie.similars = similars.value.items)
             runInAction(() => this.movie.sequels = sequels.value)
             runInAction(() => this.movie.boxOffice = boxOffice.value.items)
-            runInAction(() => this.movie.staff = staff.value)
-            runInAction(() => this.movie.reviews = reviews.value.reviews)
+            // runInAction(() => this.movie.staff = staff.value)
+            runInAction(() => this.movie.reviews = reviews.value)
             runInAction(() => this.hasLoaded = true)
         })
+            .catch(err => console.error(`Ошибка в следующем: ${err}`))
     }
 
+    getReviews(id, page) {
+        console.log(true);
+        console.log(`https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=${page}`);
+        fetch(
+            `https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=${page}`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                runInAction(() => this.movie.reviews = data)
+            });
+
+    }
 }
+
 export default new Store();

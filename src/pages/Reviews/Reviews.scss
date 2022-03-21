@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.reviews {
+    padding: 20px;
+    background-color: $white;
+    color: $black;
+    &__title {
+        color: $orange;
+    }
+    &__pages {
+        margin: 20px 0;
+    }
+    &__pages-list {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+    }
+    &__pages-list-item {
+        min-width: 24px;
+        font-size: 0.6875rem;
+        text-align: center;
+    }
+    &__pages-link {
+        padding: 4px;
+        background-color: $reviewNeutral;
+        color: $linkColor;
+        text-decoration: underline;
+        &--active,
+        &:hover {
+            background-color: $orange;
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}

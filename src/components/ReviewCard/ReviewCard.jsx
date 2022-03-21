@@ -24,7 +24,7 @@ function ReviewCard({ review }) {
     'review--negative': reviewType === 'NEGATIVE',
   });
   return (
-    <div className={`review ${reviewBackground}`}>
+    <section className={`review ${reviewBackground}`}>
       <div className='review__top'>
         <div className='review__author'>
           <div className='review__avatar'>
@@ -49,7 +49,7 @@ function ReviewCard({ review }) {
           показать всю рецензию
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 

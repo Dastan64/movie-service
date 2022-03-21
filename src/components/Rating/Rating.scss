@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+.rating {
+    border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+    padding-bottom: 30px;
+    &__heading {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    &__number {
+        margin-bottom: 8px;
+        color: #777;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 700;
+        &--low {
+            color: $lowRating;
+        }
+        &--average {
+            color: $averageRating;
+        }
+        &--high {
+            color: $highRating;
+        }
+        &--golden {
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-image: $goldenRating;
+        }
+    }
+    &__ratings {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: #777;
+        margin-bottom: 20px;
+        span {
+            font-weight: 700;
+        }
+    }
+}

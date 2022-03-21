@@ -11,6 +11,7 @@ import MoviesList from '../MoviesList/MoviesList';
 
 import store from '../../store/Store';
 import { observer } from 'mobx-react-lite';
+import Reviews from '../../pages/Reviews/Reviews';
 
 const App = observer(() => {
   const [query, setQuery] = useState('');
@@ -21,7 +22,7 @@ const App = observer(() => {
       return (
         <Link
           className='app__link'
-          to={`/movie/${movie.filmId}`}
+          to={`/movie/${movie.filmId}/`}
           key={movie.filmId}>
           <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />
         </Link>
@@ -38,6 +39,7 @@ const App = observer(() => {
           element={<MoviesList moviesList={moviesList} />}
         />
         <Route path='/movie/:id' element={<MovieDetail />} />
+        <Route path='/movie/:id/reviews' element={<Reviews />} />
       </Routes>
     </div>
   );
