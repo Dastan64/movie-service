@@ -11,4 +11,19 @@
             color: $black;
         }
     }
+    &__title {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+    &__number {
+        font-weight: 400;
+        color: $similarGrey;
+    }
+    &__icon {
+        width: 24px;
+        height: 24px;
+    }
 }

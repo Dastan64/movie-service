@@ -1,19 +1,19 @@
-.more {
-    &__reviews {
-        margin-top: 30px;
-    }
-    &__reviews-heading {
+@import "../../styles/variables.scss";
+
+.reviews-list {
+    &__heading {
         display: inline-flex;
         gap: 10px;
         align-items: center;
         margin-bottom: 20px;
+        color: $black;
     }
-    &__reviews-list {
+    &__list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    &__reviews-icon {
+    &__icon {
         width: 32px;
         height: 32px;
     }

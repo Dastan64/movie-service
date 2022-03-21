@@ -17,7 +17,7 @@ const Facts = ({ facts }) => {
   }
   return (
     <section className='more__facts facts'>
-      <h2>Знаете ли вы, что...</h2>
+      <h2 className='facts__title'>Знаете ли вы, что...</h2>
       <ul className={`facts__list ${isShort ? 'facts__list--short' : ''}`}>
         {facts.map((fact) => (
           <li
