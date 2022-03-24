@@ -3,6 +3,7 @@ import { makeAutoObservable, runInAction } from "mobx"
 class Store {
     constructor() {
         this.movies = [];
+        this.top250movies = [];
         this.movie = {
             info: {},
             facts: [],
@@ -17,6 +18,10 @@ class Store {
     }
     addMovies(data) {
         this.movies = [...data];
+    }
+
+    addTop250Movies(data) {
+        this.top250movies = [...data];
     }
     getMovies(query) {
         fetch(
@@ -61,8 +66,6 @@ class Store {
     }
 
     getReviews(id, page) {
-        console.log(true);
-        console.log(`https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=${page}`);
         fetch(
             `https://kinopoiskapiunofficial.tech/api/v1/reviews?filmId=${id}&page=${page}`,
             {
@@ -78,6 +81,23 @@ class Store {
                 runInAction(() => this.movie.reviews = data)
             });
 
+    }
+
+    getTop250Movies() {
+        fetch(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.addTop250Movies(data.films);
+            });
     }
 }
 

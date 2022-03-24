@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.top-250 {
+    &__heading {
+        margin-bottom: 20px;
+    }
+    &__link {
+        text-decoration: none;
+        color: $white;
+    }
+}

@@ -16,7 +16,7 @@ function Header({ query, setQuery }) {
             </Link>
           </div>
           <HeaderSearch query={query} setQuery={setQuery} />
-          <HeaderNav />
+          {/* <HeaderNav /> */}
         </div>
       </div>
     </div>
