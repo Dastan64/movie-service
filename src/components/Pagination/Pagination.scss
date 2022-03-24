@@ -1,26 +1,17 @@
 @import "../../styles/variables.scss";
 
-.reviews {
-    padding: 20px;
-    background-color: $white;
-    color: $black;
-    &__title {
-        color: $orange;
-    }
-    &__pages {
-        margin: 20px 0;
-    }
-    &__pages-list {
+.pages {
+    &__list {
         display: flex;
         gap: 8px;
         list-style: none;
     }
-    &__pages-list-item {
+    &__list-item {
         min-width: 24px;
         font-size: 0.6875rem;
         text-align: center;
     }
-    &__pages-link {
+    &__link {
         padding: 4px;
         background-color: $reviewNeutral;
         color: $linkColor;
@@ -31,10 +22,5 @@
             color: $white;
             text-decoration: none;
         }
-    }
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
     }
 }

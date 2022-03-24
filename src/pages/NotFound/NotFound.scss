@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.p-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("../../assets/images/404-bg.png") no-repeat center center / cover;
+    &__images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}

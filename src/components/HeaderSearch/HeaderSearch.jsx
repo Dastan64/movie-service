@@ -7,7 +7,6 @@ function HeaderSearch({ query, setQuery, getMovies }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!query) {
-      alert('Пустой запрос');
       return;
     }
     store.getMovies(query);

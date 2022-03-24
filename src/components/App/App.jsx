@@ -12,6 +12,7 @@ import store from '../../store/Store';
 import { observer } from 'mobx-react-lite';
 import Reviews from '../../pages/Reviews/Reviews';
 import Top250Movies from '../../pages/Top250Movies/Top250Movies';
+import NotFound from '../../pages/NotFound/NotFound';
 
 const App = observer(() => {
   const [query, setQuery] = useState('');
@@ -25,6 +26,7 @@ const App = observer(() => {
         <Route path='/movie/:id' element={<MovieDetail />} />
         <Route path='/movie/:id/reviews' element={<Reviews />} />
         <Route path='/movies/top250' element={<Top250Movies />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );
