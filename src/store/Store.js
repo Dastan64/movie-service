@@ -3,7 +3,18 @@ import { makeAutoObservable, runInAction } from "mobx"
 class Store {
     constructor() {
         this.movies = [];
-        this.top250movies = [];
+        this.top250movies = {
+            movies: [],
+            pagesCount: null,
+        };
+        this.top100PopularMovies = {
+            movies: [],
+            pagesCount: null,
+        };
+        this.top250movies = {
+            movies: [],
+            pagesCount: null,
+        };
         this.movie = {
             info: {},
             facts: [],
@@ -20,9 +31,11 @@ class Store {
         this.movies = [...data];
     }
 
-    addTop250Movies(data) {
-        this.top250movies = [...data];
+    addTopMovies(moviesObj, data) {
+        moviesObj.movies = [...data.films];
+        moviesObj.pagesCount = data.pagesCount;
     }
+
     getMovies(query) {
         fetch(
             `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${query}`,
@@ -83,9 +96,9 @@ class Store {
 
     }
 
-    getTop250Movies() {
+    getTop250Movies(page) {
         fetch(
-            `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1`,
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${page}`,
             {
                 method: 'GET',
                 headers: {
@@ -96,7 +109,24 @@ class Store {
         )
             .then((response) => response.json())
             .then((data) => {
-                this.addTop250Movies(data.films);
+                this.addTopMovies(this.top250movies, data);
+            });
+    }
+
+    getTop100PopularMovies(page) {
+        fetch(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${page}`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.addTopMovies(this.top100PopularMovies, data);
             });
     }
 }
