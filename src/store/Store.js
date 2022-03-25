@@ -11,6 +11,10 @@ class Store {
             movies: [],
             pagesCount: null,
         };
+        this.topAwaitedMovies = {
+            movies: [],
+            pagesCount: null,
+        };
         this.top250movies = {
             movies: [],
             pagesCount: null,
@@ -127,6 +131,23 @@ class Store {
             .then((response) => response.json())
             .then((data) => {
                 this.addTopMovies(this.top100PopularMovies, data);
+            });
+    }
+
+    getTopAwaitedMovies(page) {
+        fetch(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=${page}`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.addTopMovies(this.topAwaitedMovies, data);
             });
     }
 }

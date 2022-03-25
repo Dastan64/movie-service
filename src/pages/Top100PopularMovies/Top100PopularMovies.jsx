@@ -10,7 +10,9 @@ const Top100PopularMovies = observer(() => {
   return (
     <>
       <h1>Популярное</h1>
-      <Pagination pagesCount={pagesCount} type='TOP_100_POPULAR_FILMS' />
+      {pagesCount > 1 && (
+        <Pagination pagesCount={pagesCount} type='TOP_100_POPULAR_FILMS' />
+      )}
       <MoviesList movies={store.top100PopularMovies.movies} />
     </>
   );

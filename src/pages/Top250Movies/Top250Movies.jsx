@@ -9,7 +9,9 @@ const Top250Movies = observer(() => {
   return (
     <>
       <h1>ТОП-250 фильмов, которые нельзя пропустить</h1>
-      <Pagination pagesCount={pagesCount} type='TOP_250_BEST_FILMS' />
+      {pagesCount > 1 && (
+        <Pagination pagesCount={pagesCount} type='TOP_250_BEST_FILMS' />
+      )}
       <MoviesList movies={store.top250movies.movies} />
     </>
   );
