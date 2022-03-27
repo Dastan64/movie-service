@@ -2,8 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import store from '../../store/Store';
 import LinkHeading from '../LinkHeading/LinkHeading';
-import MoviesList from '../MoviesList/MoviesList';
-import '../Top250/Top250.scss';
+import MoviesSlider from '../MoviesSlider/MoviesSlider';
 
 const TopAwaited = observer(() => {
   useEffect(() => {
@@ -11,13 +10,13 @@ const TopAwaited = observer(() => {
   }, []);
 
   return (
-    <section className='top-250'>
+    <section className='app__category category'>
       <LinkHeading
         text={'Самые ожидаемые фильмы'}
         url={'/top-awaited-movies'}
-        isWhite={true}
+        isWhite
       />
-      <MoviesList movies={store.topAwaitedMovies.movies.slice(0, 12)} />
+      <MoviesSlider movies={store.topAwaitedMovies.movies.slice(0, 14)} />
     </section>
   );
 });

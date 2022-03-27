@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import titleArrow from '../../assets/images/title-arrow.svg';
+import titleArrow from '../../assets/images/title-arrow--white.svg';
 import './LinkHeading.scss';
 
 const LinkHeading = ({ url, text, isWhite }) => {

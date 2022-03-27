@@ -2,8 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import store from '../../store/Store';
 import LinkHeading from '../LinkHeading/LinkHeading';
-import MoviesList from '../MoviesList/MoviesList';
-import './Top250.scss';
+import MoviesSlider from '../MoviesSlider/MoviesSlider';
 
 const Top250 = observer(() => {
   useEffect(() => {
@@ -11,13 +10,13 @@ const Top250 = observer(() => {
   }, []);
 
   return (
-    <section className='top-250'>
+    <section className='app__category category'>
       <LinkHeading
         text={'ТОП-250 фильмов, которые нельзя пропустить'}
         url={'/top-250-movies'}
-        isWhite={true}
+        isWhite
       />
-      <MoviesList movies={store.top250movies.movies.slice(0, 12)} />
+      <MoviesSlider movies={store.top250movies.movies.slice(0, 14)} />
     </section>
   );
 });

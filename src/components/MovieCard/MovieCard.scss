@@ -1,6 +1,9 @@
 .movie {
     cursor: pointer;
     position: relative;
+    @media screen and (max-width: 575px) {
+        text-align: center;
+    }
     &__title {
         font-size: 1rem;
         line-height: 1.5;
@@ -18,17 +21,23 @@
         border-radius: 5px;
         height: 300px;
         object-fit: cover;
+        @media screen and (max-width: 575px) {
+            margin: 0 auto;
+        }
     }
     &__thumb {
         position: absolute;
         width: 40px;
-        left: -10px;
+        left: -6px;
         top: 0;
         border-radius: 5px;
         padding: 5px;
         background-color: grey;
         font-size: 0.8125rem;
         text-align: center;
+        @media screen and (max-width: 575px) {
+            left: 10px;
+        }
         &--green {
             background-color: #3bb33b;
             color: white;

@@ -4,20 +4,12 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Gotham Pro Regular";
-    src: url("../assets/fonts/GothamPro-Regular.ttf") format("ttf");
-    font-weight: 400;
-}
-@font-face {
-    font-family: "Gotham Pro Bold";
-    src: url("../assets/fonts/GothamPro-Bold.ttf") format("ttf");
-    font-weight: 700;
-}
+@import "fonts";
+@import "variables";
 
 body {
     font-family: "Gotham Pro Regular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000;
+    background-color: $darkBg;
     color: white;
     line-height: 1.5;
 }
@@ -31,7 +23,7 @@ h4 {
 
 h2 {
     font-size: clamp(24px, 4vw, 36px);
-    line-height: 43px;
+    line-height: 1.3;
 }
 
 a {

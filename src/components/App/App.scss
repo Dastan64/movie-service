@@ -1,13 +1,12 @@
 @import "../../styles/variables.scss";
 
 .app {
-    &__grid {
-        display: grid;
-        gap: 20px;
-        padding: 0 20px;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
     &__link {
         color: $white;
+    }
+    &__category {
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
     }
 }
