@@ -1,6 +1,8 @@
 @import "../../styles/variables.scss";
 
 .app {
+    max-width: 1920px;
+    margin: 0 auto;
     &__link {
         color: $white;
     }
@@ -8,5 +10,8 @@
         &:not(:last-child) {
             margin-bottom: 30px;
         }
+    }
+    &__category-page {
+        padding: 20px;
     }
 }

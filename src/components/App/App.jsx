@@ -22,12 +22,23 @@ import TopAwaitedMovies from '../../pages/TopAwaitedMovies/TopAwaitedMovies';
 
 const App = observer(() => {
   const [query, setQuery] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   return (
     <div className='app'>
       <Routes>
-        <Route path='/' element={<Layout query={query} setQuery={setQuery} />}>
-          <Route index element={<Home />} />
+        <Route path='/' element={<Layout setIsPopupOpen={setIsPopupOpen} />}>
+          <Route
+            index
+            element={
+              <Home
+                isPopupOpen={isPopupOpen}
+                setIsPopupOpen={setIsPopupOpen}
+                query={query}
+                setQuery={setQuery}
+              />
+            }
+          />
           <Route path='movies' element={<MoviesList movies={store.movies} />} />
           <Route path='movie/:id' element={<MovieDetail />} />
           <Route path='movie/:id/reviews' element={<Reviews />} />

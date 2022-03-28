@@ -12,7 +12,12 @@ function MovieCard({ movie }) {
   return (
     <div className='movie'>
       <div className='movie__poster-container'>
-        <img className='movie__poster' src={posterUrlPreview} alt='' />
+        <img
+          className='movie__poster'
+          src={posterUrlPreview}
+          alt={nameRu}
+          loading='lazy'
+        />
       </div>
       {rating && rating !== 'null' ? (
         <div className={classNames.join(' ')}>

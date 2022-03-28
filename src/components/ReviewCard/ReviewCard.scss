@@ -3,7 +3,8 @@
 .review {
     border-radius: 6px;
     padding: 19px 24px 38px 24px;
-    max-width: 620px;
+    max-width: 80%;
+    color: $white;
     &--positive {
         background-color: $reviewPositive;
     }
@@ -17,8 +18,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         padding-bottom: 16px;
-        border-bottom: 1px solid rgba(31, 31, 31, 0.07);
+        border-bottom: 1px solid $white;
     }
     &__avatar {
         img {
@@ -29,10 +31,8 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: $black;
     }
     &__date {
-        color: $reviewDateColor;
         font-size: 0.8125rem;
     }
     &__body {
@@ -40,12 +40,10 @@
     }
     &__title {
         margin-bottom: 12px;
-        color: $reviewTitleColor;
         font-size: 1.125rem;
     }
     &__text {
         font-size: 0.875rem;
-        color: $reviewTextColor;
         line-height: 1.5;
         white-space: pre-line;
         word-wrap: break-word;
@@ -63,7 +61,7 @@
         padding: 1px 6px 2px;
         font-size: 0.8125rem;
         cursor: pointer;
-        color: rgba(31, 31, 31, 0.7);
+        color: $white;
         border: none;
         border-radius: 2px;
         background-color: rgba(31, 31, 31, 0.1);

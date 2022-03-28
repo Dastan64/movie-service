@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 
-const Layout = ({ query, setQuery }) => {
+const Layout = ({ setIsPopupOpen }) => {
   return (
     <>
-      <Header query={query} setQuery={setQuery} />
+      <Header setIsPopupOpen={setIsPopupOpen} />
       <Outlet />
     </>
   );
