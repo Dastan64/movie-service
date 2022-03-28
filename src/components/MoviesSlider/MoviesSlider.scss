@@ -1,6 +1,6 @@
 .swiper {
     &-button-prev {
-        background: url("../../assets/images/title-arrow--white.svg") no-repeat center center / cover;
+        background: url("../../assets/images/title-arrow.svg") no-repeat center center / cover;
         transform: translateY(-50%) rotate(-180deg);
         &::after {
             display: none;
@@ -8,7 +8,7 @@
     }
 
     &-button-next {
-        background: url("../../assets/images/title-arrow--white.svg") no-repeat center center / cover;
+        background: url("../../assets/images/title-arrow.svg") no-repeat center center / cover;
         transform: translateY(-50%);
         &::after {
             display: none;

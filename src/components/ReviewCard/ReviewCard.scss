@@ -4,6 +4,9 @@
     border-radius: 6px;
     padding: 19px 24px 38px 24px;
     max-width: 80%;
+    @media screen and (max-width: 575px) {
+        max-width: 100%;
+    }
     color: $white;
     &--positive {
         background-color: $reviewPositive;

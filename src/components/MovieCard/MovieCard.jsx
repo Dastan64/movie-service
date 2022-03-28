@@ -17,6 +17,7 @@ function MovieCard({ movie }) {
           src={posterUrlPreview}
           alt={nameRu}
           loading='lazy'
+          draggable='false'
         />
       </div>
       {rating && rating !== 'null' ? (

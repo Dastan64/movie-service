@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .movie {
     cursor: pointer;
     position: relative;
@@ -9,6 +11,7 @@
         line-height: 1.5;
         margin-top: 10px;
         font-weight: 300;
+        color: $white;
     }
     &__subtitle {
         margin-top: 5px;

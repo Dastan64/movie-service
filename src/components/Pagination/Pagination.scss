@@ -14,13 +14,13 @@
     }
     &__link {
         padding: 4px;
-        background-color: $reviewNeutral;
-        color: $linkColor;
+        background-color: $primary;
+        color: $white;
         text-decoration: underline;
         &--active,
         &:hover {
-            background-color: $orange;
-            color: $white;
+            background-color: $white;
+            color: $primary;
             text-decoration: none;
         }
     }

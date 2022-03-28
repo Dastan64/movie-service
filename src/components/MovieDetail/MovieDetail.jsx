@@ -60,7 +60,7 @@ const MovieDetail = observer(() => {
             <div className='detail__container'>
               <div className='detail__image-container'>
                 {posterUrlPreview && (
-                  <img src={posterUrlPreview} alt={nameRu} />
+                  <img src={posterUrlPreview} alt={nameRu} draggable='false' />
                 )}
               </div>
               <div className='detail__info'>
@@ -80,10 +80,12 @@ const MovieDetail = observer(() => {
                       <Countries countries={countries} />
                     )}
                     {genres.length > 0 && <Genres genres={genres} />}
-                    <div className='about__info-line'>
-                      <p className='about__info-caption'>Слоган:</p>
-                      <p className='about__slogan'>"{slogan}"</p>
-                    </div>
+                    {slogan && (
+                      <div className='about__info-line'>
+                        <p className='about__info-caption'>Слоган:</p>
+                        <p className='about__slogan'>"{slogan}"</p>
+                      </div>
+                    )}
                     {staff.length > 0 && <Staff staff={staff} />}
                     {boxOffice.length > 0 && (
                       <BoxOffice boxOffice={boxOffice} />
