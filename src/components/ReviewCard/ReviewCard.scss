@@ -1,7 +1,6 @@
 @import "../../styles/variables.scss";
 
 .review {
-    border-radius: 6px;
     padding: 19px 24px 38px 24px;
     max-width: 80%;
     @media screen and (max-width: 575px) {
@@ -9,13 +8,22 @@
     }
     color: $white;
     &--positive {
-        background-color: $reviewPositive;
+        border-left: 8px solid $reviewPositive;
+        border-top: 2px solid $reviewPositive;
+        border-right: 2px solid $reviewPositive;
+        border-bottom: 2px solid $reviewPositive;
     }
     &--neutral {
-        background-color: $reviewNeutral;
+        border-left: 8px solid $reviewNeutral;
+        border-top: 2px solid $reviewNeutral;
+        border-right: 2px solid $reviewNeutral;
+        border-bottom: 2px solid $reviewNeutral;
     }
     &--negative {
-        background-color: $reviewNegative;
+        border-left: 8px solid $reviewNegative;
+        border-top: 2px solid $reviewNegative;
+        border-right: 2px solid $reviewNegative;
+        border-bottom: 2px solid $reviewNegative;
     }
     &__top {
         display: flex;

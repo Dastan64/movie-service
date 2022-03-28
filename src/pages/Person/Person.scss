@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+
+.person {
+    padding: 20px;
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    &__photo {
+        width: 220px;
+        height: 350px;
+        object-fit: cover;
+    }
+    &__original-name {
+        margin: 8px 0;
+        color: $white;
+        opacity: 0.7;
+    }
+    &__about {
+        margin: 22px 0;
+    }
+}

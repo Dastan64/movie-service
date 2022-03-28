@@ -46,7 +46,7 @@
     }
     &__info-line {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
         &:not(:last-child) {
             margin-bottom: 16px;
@@ -58,6 +58,7 @@
     }
     &__info-caption {
         width: 160px;
+        flex-shrink: 0;
         color: $grey;
     }
     &__rating {

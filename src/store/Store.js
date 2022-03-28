@@ -29,6 +29,7 @@ class Store {
             reviews: [],
         };
         this.hasLoaded = false;
+        this.person = {};
         makeAutoObservable(this);
     }
     addMovies(data) {
@@ -149,6 +150,27 @@ class Store {
             .then((data) => {
                 this.addTopMovies(this.topAwaitedMovies, data);
             });
+    }
+
+    getPerson(id) {
+        fetch(
+            `https://kinopoiskapiunofficial.tech/api/v1/staff/${id}`,
+            {
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.addPerson(data);
+            });
+    }
+
+    addPerson(data) {
+        this.person = { ...data }
     }
 }
 

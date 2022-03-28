@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 //Swiper parts
 import { Navigation } from 'swiper';
@@ -35,7 +36,7 @@ const MoviesSlider = ({ movies }) => {
       spaceBetween={8}>
       {movies &&
         movies.map((movie) => (
-          <SwiperSlide key={movie.filmId}>
+          <SwiperSlide key={uuidv4()}>
             <Link
               className='about__link'
               to={`/movie/${movie.filmId}`}

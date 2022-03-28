@@ -2,10 +2,15 @@
 
 .reviews {
     padding: 20px;
-    background-color: $white;
+    background-color: $darkBg;
     color: $black;
     &__title {
-        color: $orange;
+        color: $white;
+        margin-bottom: 20px;
+        a {
+            color: $primary;
+            text-decoration: underline;
+        }
     }
     &__pages {
         margin: 20px 0;

@@ -18,14 +18,24 @@ const Facts = ({ facts }) => {
   return (
     <section className='more__facts facts'>
       <h2 className='facts__title'>Знаете ли вы, что...</h2>
-      <ul className={`facts__list ${isShort ? 'facts__list--short' : ''}`}>
-        {facts.map((fact) => (
-          <li
-            className='facts__list-item'
-            key={uuidv4()}
-            dangerouslySetInnerHTML={{ __html: fact.text }}></li>
-        ))}
-      </ul>
+      {facts.every((fact) => typeof fact === 'string') ? (
+        <ul className={`facts__list ${isShort ? 'facts__list--short' : ''}`}>
+          {facts.map((fact) => (
+            <li className='facts__list-item' key={uuidv4()}>
+              {fact}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className={`facts__list ${isShort ? 'facts__list--short' : ''}`}>
+          {facts.map((fact) => (
+            <li
+              className='facts__list-item'
+              key={uuidv4()}
+              dangerouslySetInnerHTML={{ __html: fact.text }}></li>
+          ))}
+        </ul>
+      )}
       <button
         type='button'
         className={`facts__btn ${isShort ? '' : 'facts__btn--rotated'}`}

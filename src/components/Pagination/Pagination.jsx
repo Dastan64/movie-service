@@ -3,9 +3,8 @@ import store from '../../store/Store';
 import { getPagesCount } from '../../utils/getPagesCount';
 import './Pagination.scss';
 
-const Pagination = ({ pagesCount, type }) => {
+const Pagination = ({ pagesCount, type, ...rest }) => {
   const [page, setPage] = useState(1);
-
   function changePage(pageNumber) {
     setPage(pageNumber);
     switch (type) {
@@ -17,6 +16,9 @@ const Pagination = ({ pagesCount, type }) => {
         break;
       case 'TOP_AWAIT_FILMS':
         store.getTopAwaitedMovies(pageNumber);
+        break;
+      case 'REVIEWS':
+        store.getReviews(rest.kinopoiskId, pageNumber);
         break;
       default:
         break;

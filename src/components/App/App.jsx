@@ -19,6 +19,7 @@ import Top250Movies from '../../pages/Top250Movies/Top250Movies';
 import NotFound from '../../pages/NotFound/NotFound';
 import Top100PopularMovies from '../../pages/Top100PopularMovies/Top100PopularMovies';
 import TopAwaitedMovies from '../../pages/TopAwaitedMovies/TopAwaitedMovies';
+import Person from '../../pages/Person/Person';
 
 const App = observer(() => {
   const [query, setQuery] = useState('');
@@ -43,6 +44,8 @@ const App = observer(() => {
           <Route path='movie/:id' element={<MovieDetail />} />
           <Route path='movie/:id/reviews' element={<Reviews />} />
         </Route>
+        <Route path='/name/:id' element={<Person />} />
+
         <Route path='/top-250-movies' element={<Top250Movies />} />
         <Route
           path='/top-100-popular-movies'
