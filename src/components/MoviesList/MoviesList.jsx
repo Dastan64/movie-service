@@ -9,7 +9,7 @@ function MoviesList({ movies }) {
       return (
         <Link
           className='app__link'
-          to={`/movie/${movie.filmId}/`}
+          to={`/film/${movie.filmId}/`}
           key={movie.filmId}>
           <MovieCard key={movie.filmId} movie={movie} id={movie.filmId} />
         </Link>

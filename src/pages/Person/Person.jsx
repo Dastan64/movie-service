@@ -1,11 +1,20 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import './Person.scss';
 import { useParams } from 'react-router-dom';
 import Store from '../../store/Store';
-import Loader from '../../components/Loader/Loader';
+
+//Image
+import noPhoto from '../../assets/images/no-person-photo.jpg';
+
+//Utils
 import { formatBirthDate } from '../../utils/formatBirthDate';
 import { formatAgeDeclination } from '../../utils/formatAgeDeclination';
+
+//Styles
+import './Person.scss';
+
+//Components
+import Loader from '../../components/Loader/Loader';
 import Facts from '../../components/Facts/Facts';
 
 const Person = observer(() => {
@@ -35,12 +44,21 @@ const Person = observer(() => {
         <article className='person'>
           <div className='person__container'>
             <div className='person__photo-container'>
-              <img
-                src={posterUrl}
-                alt={nameRu}
-                className='person__photo'
-                draggable='false'
-              />
+              {posterUrl ? (
+                <img
+                  src={posterUrl}
+                  alt={nameRu}
+                  className='person__photo'
+                  draggable='false'
+                />
+              ) : (
+                <img
+                  src={noPhoto}
+                  alt={nameRu}
+                  className='person__photo'
+                  draggable='false'
+                />
+              )}
             </div>
             <div className='person__info'>
               <h1 className='person__ru-name'>{nameRu}</h1>
@@ -69,12 +87,15 @@ const Person = observer(() => {
                   <p className='about__info-caption'>Место рождения</p>
                   <p>{birthplace}</p>
                 </div>
-                <div className='about__info-line'>
-                  <p className='about__info-caption'>Супруга</p>
-                  <p>
-                    {spouses[0].name}, {spouses[0].children} детей
-                  </p>
-                </div>
+                {spouses.length > 0 && (
+                  <div className='about__info-line'>
+                    <p className='about__info-caption'>Супруга</p>
+                    <p>
+                      {spouses[0].name},{' '}
+                      {spouses[0].children && spouses[0].children} детей
+                    </p>
+                  </div>
+                )}
                 <div className='about__info-line'>
                   <p className='about__info-caption'></p>
                   <p></p>

@@ -36,13 +36,15 @@ const Facts = ({ facts }) => {
           ))}
         </ul>
       )}
-      <button
-        type='button'
-        className={`facts__btn ${isShort ? '' : 'facts__btn--rotated'}`}
-        onClick={handleMoreFacts}
-        ref={btnRef}>
-        Показать ещё
-      </button>
+      {facts.length > 3 && (
+        <button
+          type='button'
+          className={`facts__btn ${isShort ? '' : 'facts__btn--rotated'}`}
+          onClick={handleMoreFacts}
+          ref={btnRef}>
+          Показать ещё
+        </button>
+      )}
     </section>
   );
 };

@@ -23,6 +23,12 @@ function ReviewCard({ review }) {
     'review--neutral': reviewType === 'NEUTRAL',
     'review--negative': reviewType === 'NEGATIVE',
   });
+
+  const btnBackground = clsx({
+    'review__more-btn--positive': reviewType === 'POSITIVE',
+    'review__more-btn--neutral': reviewType === 'NEUTRAL',
+    'review__more-btn--negative': reviewType === 'NEGATIVE',
+  });
   return (
     <section className={`review ${reviewBackground}`}>
       <div className='review__top'>
@@ -44,7 +50,7 @@ function ReviewCard({ review }) {
           type='button'
           className={`review__more-btn ${
             isTextShort ? '' : 'review__more-btn--hidden'
-          }`}
+          } ${btnBackground}`}
           onClick={showMoreReview}>
           показать всю рецензию
         </button>
