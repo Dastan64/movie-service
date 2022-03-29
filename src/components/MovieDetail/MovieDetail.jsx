@@ -52,7 +52,7 @@ const MovieDetail = observer(() => {
 
   return (
     <>
-      {!store.hasLoaded ? (
+      {!store.movie.hasLoaded ? (
         <Loader />
       ) : (
         <div className='detail'>

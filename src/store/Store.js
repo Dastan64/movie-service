@@ -30,8 +30,8 @@ class Store {
             boxOffice: [],
             staff: [],
             reviews: [],
+            hasLoaded: false,
         };
-        this.hasLoaded = false;
         this.person = {};
         makeAutoObservable(this);
     }
@@ -82,7 +82,7 @@ class Store {
             runInAction(() => this.movie.boxOffice = boxOffice.value.items)
             // runInAction(() => this.movie.staff = staff.value)
             runInAction(() => this.movie.reviews = reviews.value)
-            runInAction(() => this.hasLoaded = true)
+            runInAction(() => this.movie.hasLoaded = true)
         })
             .catch(err => console.error(`Ошибка в следующем: ${err}`))
     }
