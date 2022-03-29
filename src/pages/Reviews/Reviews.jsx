@@ -16,7 +16,7 @@ const Reviews = observer(() => {
   return (
     <div className='reviews'>
       <h2 className='reviews__title'>
-        Рецензии / <Link to={`/movie/${kinopoiskId}/`}>{nameRu}</Link>
+        Рецензии / <Link to={`/film/${kinopoiskId}/`}>{nameRu}</Link>
       </h2>
       {pagesCount > 1 && (
         <Pagination

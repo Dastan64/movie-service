@@ -7,7 +7,7 @@ function Reviews({ reviews }) {
   const { id } = useParams();
   return (
     <section className='more__reviews reviews-list'>
-      <LinkHeading url={`/movie/${id}/reviews`} text={'Рецензии зрителей'} />
+      <LinkHeading url={`/film/${id}/reviews`} text={'Рецензии зрителей'} />
       <ul className='reviews-list__list'>
         {reviews.slice(0, 10).map((review) => (
           <ReviewCard review={review} key={review.reviewId} />

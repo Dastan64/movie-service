@@ -41,8 +41,8 @@ const App = observer(() => {
             }
           />
           <Route path='movies' element={<MoviesList movies={store.movies} />} />
-          <Route path='movie/:id' element={<MovieDetail />} />
-          <Route path='movie/:id/reviews' element={<Reviews />} />
+          <Route path='film/:id' element={<MovieDetail />} />
+          <Route path='film/:id/reviews' element={<Reviews />} />
         </Route>
         <Route path='/name/:id' element={<Person />} />
 

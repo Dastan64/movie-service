@@ -39,7 +39,7 @@ const MoviesSlider = ({ movies }) => {
           <SwiperSlide key={uuidv4()}>
             <Link
               className='about__link'
-              to={`/movie/${movie.filmId}`}
+              to={`/film/${movie.filmId}`}
               key={movie.filmId}>
               <MovieCard movie={movie} />
             </Link>
