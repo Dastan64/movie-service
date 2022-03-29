@@ -8,14 +8,17 @@ class Store {
             pagesCount: null,
         };
         this.top100PopularMovies = {
+            hasLoaded: false,
             movies: [],
             pagesCount: null,
         };
         this.topAwaitedMovies = {
+            hasLoaded: false,
             movies: [],
             pagesCount: null,
         };
         this.top250movies = {
+            hasLoaded: false,
             movies: [],
             pagesCount: null,
         };
@@ -39,6 +42,7 @@ class Store {
     addTopMovies(moviesObj, data) {
         moviesObj.movies = [...data.films];
         moviesObj.pagesCount = data.pagesCount;
+        moviesObj.hasLoaded = true;
     }
 
     getMovies(query) {
