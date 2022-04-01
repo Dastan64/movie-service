@@ -21,16 +21,20 @@ const Rating = () => {
   return (
     <section className='more__rating rating'>
       <h3 className='rating__heading'>Рейтинг фильма</h3>
-      <p className={`rating__number ${ratingNumberStyle}`}>{ratingKinopoisk}</p>
+      <p className={`rating__number ${ratingNumberStyle}`}>
+        {ratingKinopoisk ? ratingKinopoisk : '?'}
+      </p>
       <div className='rating__ratings'>
         {ratingKinopoiskVoteCount && (
           <p>{formatNumber(ratingKinopoiskVoteCount)} оценок</p>
         )}
-        {ratingImdbVoteCount && (
+        {ratingImdbVoteCount ? (
           <p>
             <span>IMDb: {ratingImdb}</span> ({formatNumber(ratingImdbVoteCount)}{' '}
             оценок)
           </p>
+        ) : (
+          'ждём IMDb'
         )}
       </div>
     </section>

@@ -48,7 +48,7 @@ const MovieDetail = observer(() => {
   const similars = store.movie.similars;
   const boxOffice = store.movie.boxOffice;
   const staff = store.movie.staff;
-  const reviews = store.movie.reviews.reviews;
+  const reviews = store.movie.reviews?.reviews;
 
   return (
     <>
@@ -108,7 +108,9 @@ const MovieDetail = observer(() => {
               <Rating />
               {similars.length > 0 && <Similars similars={similars} />}
               {facts.length > 0 && <FactsList facts={facts} />}
-              {reviews.length > 0 && <ReviewsList reviews={reviews} />}
+              {reviews && reviews.length > 0 && (
+                <ReviewsList reviews={reviews} />
+              )}
             </div>
           </div>
         </div>

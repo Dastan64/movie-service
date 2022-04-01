@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
 import './MoviesList.scss';
 
-function MoviesList({ movies }) {
+const MoviesList = ({ movies }) => {
   const moviesList =
     movies.length > 0 &&
     movies.map((movie) => {
@@ -16,6 +16,6 @@ function MoviesList({ movies }) {
       );
     });
   return <div className='app__grid movies-grid'>{moviesList}</div>;
-}
+};
 
 export default MoviesList;

@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import MovieDetail from '../MovieDetail/MovieDetail';
 import MoviesList from '../MoviesList/MoviesList';
 import Layout from '../Layout/Layout';
+import Popup from '../Popup/Popup';
 
 import Store from '../../store/Store';
 import { observer } from 'mobx-react-lite';
@@ -21,7 +22,6 @@ import NotFound from '../../pages/NotFound/NotFound';
 import Top100PopularMovies from '../../pages/Top100PopularMovies/Top100PopularMovies';
 import TopAwaitedMovies from '../../pages/TopAwaitedMovies/TopAwaitedMovies';
 import Person from '../../pages/Person/Person';
-import Popup from '../Popup/Popup';
 
 const App = observer(() => {
   const [query, setQuery] = useState('');
@@ -30,6 +30,14 @@ const App = observer(() => {
 
   useEffect(() => {
     searchInputRef.current.focus();
+
+    const close = (e) => {
+      if (e.key === 'Escape') {
+        setIsPopupOpen(false);
+      }
+    };
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
   });
 
   const navigate = useNavigate();
@@ -89,6 +97,7 @@ const App = observer(() => {
             placeholder='Хочу найти фильм...'
             onChange={handleChange}
             ref={searchInputRef}
+            autoFocus={true}
           />
           <button className='form__submit-btn'>
             <svg

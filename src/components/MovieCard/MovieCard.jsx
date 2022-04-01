@@ -1,6 +1,7 @@
+// import { observer } from 'mobx-react-lite';
 import './MovieCard.scss';
 
-function MovieCard({ movie }) {
+const MovieCard = ({ movie }) => {
   const { nameRu, posterUrlPreview, year, rating, genres } = movie;
   let classNames = ['movie__thumb'];
 
@@ -28,13 +29,13 @@ function MovieCard({ movie }) {
         ''
       )}
       <h2 className='movie__title'>{nameRu}</h2>
-      {year !== 'null' && genres && (
+      {year !== 'null' && genres?.length > 0 && (
         <p className='movie__subtitle'>
           {year}, {genres[0].genre}
         </p>
       )}
     </div>
   );
-}
+};
 
 export default MovieCard;
