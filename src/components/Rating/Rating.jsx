@@ -25,8 +25,10 @@ const Rating = () => {
         {ratingKinopoisk ? ratingKinopoisk : '?'}
       </p>
       <div className='rating__ratings'>
-        {ratingKinopoiskVoteCount && (
+        {ratingKinopoiskVoteCount ? (
           <p>{formatNumber(ratingKinopoiskVoteCount)} оценок</p>
+        ) : (
+          'ждём КиноПоиск / '
         )}
         {ratingImdbVoteCount ? (
           <p>

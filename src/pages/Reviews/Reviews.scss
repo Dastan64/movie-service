@@ -3,13 +3,14 @@
 .reviews {
     padding: 20px;
     background-color: $darkBg;
-    color: $black;
+    color: $white;
     &__title {
         color: $white;
         margin-bottom: 20px;
         a {
             color: $primary;
-            text-decoration: underline;
+            padding-bottom: 2px;
+            border-bottom: 3px dashed $primary;
         }
     }
     &__pages {
