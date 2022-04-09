@@ -1,7 +1,7 @@
 import '../../styles/global.scss';
 import './App.scss';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ import MoviesList from '../MoviesList/MoviesList';
 import Layout from '../Layout/Layout';
 import Popup from '../Popup/Popup';
 
-import Store from '../../store/Store';
+import { StoreContext } from '../..';
 import { observer } from 'mobx-react-lite';
 
 //Pages
@@ -27,6 +27,8 @@ const App = observer(() => {
   const [query, setQuery] = useState('');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const searchInputRef = useRef(null);
+
+  const store = useContext(StoreContext);
 
   useEffect(() => {
     searchInputRef.current.focus();
@@ -51,7 +53,7 @@ const App = observer(() => {
     if (!query) {
       return;
     }
-    Store.getMovies(query);
+    store.getMovies(query);
     navigate('/movies');
     setIsPopupOpen(false);
   }
@@ -74,7 +76,7 @@ const App = observer(() => {
               />
             }
           />
-          <Route path='movies' element={<MoviesList movies={Store.movies} />} />
+          <Route path='movies' element={<MoviesList movies={store.movies} />} />
           <Route path='film/:id' element={<MovieDetail />} />
           <Route path='film/:id/reviews' element={<Reviews />} />
         </Route>

@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import clsx from 'clsx';
-import store from '../../store/Store';
 import './Rating.scss';
 import { formatNumber } from '../../utils/formatNumber';
+import { StoreContext } from '../..';
 
 const Rating = () => {
+  const store = useContext(StoreContext);
+
   const {
     ratingKinopoisk,
     ratingKinopoiskVoteCount,

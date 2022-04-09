@@ -1,8 +1,9 @@
 //Core
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import store from '../../store/Store';
+
+import { StoreContext } from '../..';
 
 //Styles
 import './MovieDetail.scss';
@@ -25,9 +26,11 @@ import Rating from '../Rating/Rating';
 const MovieDetail = observer(() => {
   const { id } = useParams();
 
+  const store = useContext(StoreContext);
+
   useEffect(() => {
     store.getAllMovieInfo(id);
-  }, [id]);
+  }, [id, store]);
 
   const {
     posterUrlPreview,

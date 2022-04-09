@@ -1,18 +1,20 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import Store from '../../store/Store';
+import { useEffect, useContext } from 'react';
+import { StoreContext } from '../..';
 import LinkHeading from '../LinkHeading/LinkHeading';
 import Loader from '../Loader/Loader';
 import MoviesSlider from '../MoviesSlider/MoviesSlider';
 
 const Top100 = observer(() => {
+  const store = useContext(StoreContext);
+
   useEffect(() => {
-    Store.getTop100PopularMovies(1);
-  }, []);
+    store.getTop100PopularMovies(1);
+  }, [store]);
 
   return (
     <>
-      {Store.top100PopularMovies.hasLoaded ? (
+      {store.top100PopularMovies.hasLoaded ? (
         <section className='app__category category'>
           <LinkHeading
             text={'Популярное'}
@@ -20,7 +22,7 @@ const Top100 = observer(() => {
             isWhite
           />
           <MoviesSlider
-            movies={Store.top100PopularMovies.movies.slice(0, 14)}
+            movies={store.top100PopularMovies.movies.slice(0, 14)}
           />
         </section>
       ) : (

@@ -1,4 +1,5 @@
-import store from '../../store/Store';
+import { useContext } from 'react';
+import { StoreContext } from '../..';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,8 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import './Reviews.scss';
 
 const Reviews = observer(() => {
+  const store = useContext(StoreContext);
+
   const { nameRu, kinopoiskId } = store.movie.info;
   const { reviews, pagesCount } = store.movie.reviews;
 

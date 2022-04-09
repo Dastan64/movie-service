@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx"
 
-class Store {
+export default class Store {
     constructor() {
         this.movies = [];
         this.top250movies = {
@@ -178,4 +178,4 @@ class Store {
     }
 }
 
-export default new Store();
+// export default new Store();

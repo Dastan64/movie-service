@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
-import Store from '../../store/Store';
+import { StoreContext } from '../..';
 
 //Image
 import noPhoto from '../../assets/images/no-person-photo.jpg';
@@ -20,9 +20,11 @@ import Facts from '../../components/Facts/Facts';
 const Person = observer(() => {
   const { id } = useParams();
 
+  const store = useContext(StoreContext);
+
   useEffect(() => {
-    Store.getPerson(id);
-  }, [id]);
+    store.getPerson(id);
+  }, [id, store]);
 
   const {
     posterUrl,
@@ -35,10 +37,10 @@ const Person = observer(() => {
     birthplace,
     spouses,
     facts,
-  } = Store.person;
+  } = store.person;
   return (
     <>
-      {Object.keys(Store.person).length === 0 ? (
+      {Object.keys(store.person).length === 0 ? (
         <Loader />
       ) : (
         <article className='person'>

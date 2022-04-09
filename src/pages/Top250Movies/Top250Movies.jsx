@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination/Pagination';
-import store from '../../store/Store';
+import { StoreContext } from '../..';
 
 const Top250Movies = observer(() => {
+  const store = useContext(StoreContext);
   const { pagesCount } = store.top250movies;
 
   return (

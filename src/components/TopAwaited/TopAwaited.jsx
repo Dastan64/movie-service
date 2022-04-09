@@ -1,25 +1,27 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import Store from '../../store/Store';
+import { useEffect, useContext } from 'react';
+import { StoreContext } from '../..';
 import LinkHeading from '../LinkHeading/LinkHeading';
 import Loader from '../Loader/Loader';
 import MoviesSlider from '../MoviesSlider/MoviesSlider';
 
 const TopAwaited = observer(() => {
+  const store = useContext(StoreContext);
+
   useEffect(() => {
-    Store.getTopAwaitedMovies(1);
-  }, []);
+    store.getTopAwaitedMovies(1);
+  }, [store]);
 
   return (
     <>
-      {Store.topAwaitedMovies.hasLoaded ? (
+      {store.topAwaitedMovies.hasLoaded ? (
         <section className='app__category category'>
           <LinkHeading
             text={'Самые ожидаемые фильмы'}
             url={'/top-awaited-movies'}
             isWhite
           />
-          <MoviesSlider movies={Store.topAwaitedMovies.movies.slice(0, 14)} />
+          <MoviesSlider movies={store.topAwaitedMovies.movies.slice(0, 14)} />
         </section>
       ) : (
         <Loader />

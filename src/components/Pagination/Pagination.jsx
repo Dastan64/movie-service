@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import store from '../../store/Store';
+import { useState, useContext } from 'react';
+import { StoreContext } from '../..';
 import { getPagesCount } from '../../utils/getPagesCount';
 import './Pagination.scss';
 
 const Pagination = ({ pagesCount, type, ...rest }) => {
   const [page, setPage] = useState(1);
+  const store = useContext(StoreContext);
+
   function changePage(pageNumber) {
     setPage(pageNumber);
     switch (type) {
