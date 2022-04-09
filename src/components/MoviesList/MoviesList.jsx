@@ -15,7 +15,17 @@ const MoviesList = ({ movies }) => {
         </Link>
       );
     });
-  return <div className='app__grid movies-grid'>{moviesList}</div>;
+  return (
+    <>
+      {moviesList.length > 0 ? (
+        <div className='app__grid movies-grid'>{moviesList}</div>
+      ) : (
+        <h2 className='app__warning-heading'>
+          Извините, но мы не смогли найти ничего похожего.
+        </h2>
+      )}
+    </>
+  );
 };
 
 export default MoviesList;
