@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/movie-service/static/css/main.99d7d019.css",
-    "main.js": "/movie-service/static/js/main.a906c391.js",
-    "static/media/404-bg.png": "/movie-service/static/media/404-bg.5d002036b74851793c24.png",
-    "static/media/GothamPro-Bold.ttf": "/movie-service/static/media/GothamPro-Bold.764ba13de4409a990823.ttf",
-    "static/media/GothamPro-Regular.ttf": "/movie-service/static/media/GothamPro-Regular.4f71921a0823129cd8ba.ttf",
-    "static/media/404.png": "/movie-service/static/media/404.d17b38483ba6cb821b82.png",
-    "static/media/no-person-photo.jpg": "/movie-service/static/media/no-person-photo.d058dc4cc43d4fd06bd8.jpg",
-    "index.html": "/movie-service/index.html",
-    "static/media/loader.svg": "/movie-service/static/media/loader.a9765a60e5fde730d1269de521a37123.svg",
-    "static/media/avatar.svg": "/movie-service/static/media/avatar.b2149c0ecf1f5b71c16708ce68b7ef92.svg",
-    "static/media/small-arrow-down.svg": "/movie-service/static/media/small-arrow-down.05ca68d8a43645f35a98.svg",
-    "static/media/title-arrow.svg": "/movie-service/static/media/title-arrow.d5f8b05596925eefbe54e769686a783a.svg",
-    "main.99d7d019.css.map": "/movie-service/static/css/main.99d7d019.css.map",
-    "main.a906c391.js.map": "/movie-service/static/js/main.a906c391.js.map"
+    "main.css": "./static/css/main.1bf2f798.css",
+    "main.js": "./static/js/main.c5b70c16.js",
+    "static/media/404-bg.png": "./static/media/404-bg.5d002036b74851793c24.png",
+    "static/media/GothamPro-Bold.ttf": "./static/media/GothamPro-Bold.764ba13de4409a990823.ttf",
+    "static/media/GothamPro-Regular.ttf": "./static/media/GothamPro-Regular.4f71921a0823129cd8ba.ttf",
+    "static/media/404.png": "./static/media/404.d17b38483ba6cb821b82.png",
+    "static/media/no-person-photo.jpg": "./static/media/no-person-photo.d058dc4cc43d4fd06bd8.jpg",
+    "index.html": "./index.html",
+    "static/media/loader.svg": "./static/media/loader.a9765a60e5fde730d1269de521a37123.svg",
+    "static/media/avatar.svg": "./static/media/avatar.b2149c0ecf1f5b71c16708ce68b7ef92.svg",
+    "static/media/small-arrow-down.svg": "./static/media/small-arrow-down.05ca68d8a43645f35a98.svg",
+    "static/media/title-arrow.svg": "./static/media/title-arrow.d5f8b05596925eefbe54e769686a783a.svg",
+    "main.1bf2f798.css.map": "./static/css/main.1bf2f798.css.map",
+    "main.c5b70c16.js.map": "./static/js/main.c5b70c16.js.map"
   },
   "entrypoints": [
-    "static/css/main.99d7d019.css",
-    "static/js/main.a906c391.js"
+    "static/css/main.1bf2f798.css",
+    "static/js/main.c5b70c16.js"
   ]
 }
