@@ -7,6 +7,10 @@
 @import "fonts";
 @import "variables";
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Gotham Pro Regular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: $darkBg;

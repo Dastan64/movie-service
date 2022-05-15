@@ -46,6 +46,7 @@ const MovieDetail = observer(() => {
     ratingAgeLimits,
     filmLength,
   } = store.movie.info;
+
   const sequels = store.movie.sequels;
   const facts = store.movie.facts;
   const similars = store.movie.similars;

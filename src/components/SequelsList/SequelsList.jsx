@@ -25,7 +25,7 @@ function SequelsList({ sequels }) {
               <SwiperSlide key={sequel.filmId}>
                 <Link
                   className='about__link'
-                  to={`/movie/${sequel.filmId}`}
+                  to={`/film/${sequel.filmId}`}
                   key={sequel.filmId}>
                   <MovieCard movie={sequel} />
                 </Link>

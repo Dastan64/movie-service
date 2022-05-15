@@ -1,15 +1,14 @@
-// import { observer } from 'mobx-react-lite';
+import clsx from 'clsx';
 import './MovieCard.scss';
 
 const MovieCard = ({ movie }) => {
   const { nameRu, posterUrlPreview, year, rating, genres } = movie;
-  let classNames = ['movie__thumb'];
 
-  if (rating > 7) {
-    classNames.push('movie__thumb--green');
-  } else if (rating < 4) {
-    classNames.push('movie__thumb--red');
-  }
+  const movieThumbStyle = clsx({
+    'movie__thumb--red': rating < 4,
+    'movie__thumb--green': rating > 7,
+  });
+
   return (
     <div className='movie'>
       <div className='movie__poster-container'>
@@ -22,7 +21,7 @@ const MovieCard = ({ movie }) => {
         />
       </div>
       {rating && rating !== 'null' ? (
-        <div className={classNames.join(' ')}>
+        <div className={`movie__thumb ${movieThumbStyle}`}>
           <p className='movie__thumb-number'>{rating}</p>
         </div>
       ) : (

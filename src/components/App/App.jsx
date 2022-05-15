@@ -81,7 +81,6 @@ const App = observer(() => {
           <Route path='film/:id/reviews' element={<Reviews />} />
         </Route>
         <Route path='/name/:id' element={<Person />} />
-
         <Route path='/top-250-movies' element={<Top250Movies />} />
         <Route
           path='/top-100-popular-movies'

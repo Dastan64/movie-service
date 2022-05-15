@@ -7,7 +7,8 @@ const Pagination = ({ pagesCount, type, ...rest }) => {
   const [page, setPage] = useState(1);
   const store = useContext(StoreContext);
 
-  function changePage(pageNumber) {
+  function changePage(e, pageNumber) {
+    e.preventDefault();
     setPage(pageNumber);
     switch (type) {
       case 'TOP_250_BEST_FILMS':
@@ -37,7 +38,7 @@ const Pagination = ({ pagesCount, type, ...rest }) => {
               }`}
               href='#'
               id={pageNumber}
-              onClick={() => changePage(pageNumber)}>
+              onClick={(e) => changePage(e, pageNumber)}>
               {pageNumber}
             </a>
           </li>
